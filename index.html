@@ -9,11 +9,36 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.10.2/p5.js"></script>
 		<script>$(function(){$("#visual-header").load("header.html")});</script>
 		<script>$(function(){$("#visual-footer").load("footer.html")});</script>
+		<script src="scripts/slideshow.js"></script>
+		<script>
+			window.onload = function(){
+				autoShowSlides();
+			}
+		</script>
 	</head>
 	<body>
 		<header id="top">
 			<div id="visual-header"></div>
 		</header>
+
+		<div class="slideshow-container" style="text-align:center">
+			<div class="mySlides fade">
+			  <img src="images/slideshow/img1.jpg">
+			</div>
+			<div class="mySlides fade">
+			  <img src="images/slideshow/img2.jpg">
+			</div>
+			<div class="mySlides fade">
+			  <img src="images/slideshow/img3.jpg">
+			</div>
+			<br>
+			<div style="text-align:center">
+				<span class="dot" onclick="currentSlide(1)"></span>
+			  <span class="dot" onclick="currentSlide(2)"></span>
+			  <span class="dot" onclick="currentSlide(3)"></span>
+			</div>
+		</div>
+
 		<section>
       <h1>System will be implement soon</h1>
 		</section>

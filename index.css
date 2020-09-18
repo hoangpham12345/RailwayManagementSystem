@@ -1,30 +1,32 @@
 body{
-  background-color: AliceBlue;
-  font-family: sans-serif;
+  background-color: #f2e6d9;
+  margin: 0;
 }
 
 header{
   overflow: auto;
   padding-top: 20px;
-  background-color: #87CEEB;
+  background-color: #c2843d;
 }
 
 header table{
+  padding: 0px 0px 0px 20px;
   width: 100%;
 }
 
 header p{
-  font-size: 80px;
-  font-family: cursive;
-  font-style: oblique;
+  font-size: 30px;
+  font-weight: bold;
+  font-family: Candara;
+  font-style: normal;
   padding: 0px;
   margin: auto;
 }
 
 nav {
   overflow: auto;
-  background-color: #efe5d0;
-	margin: 10px 10px 0px 10px;
+  background-color: #996633;
+	margin: 10px 0px 0px 0px;
 }
 nav ul {
 	margin: 0px;
@@ -33,51 +35,31 @@ nav ul {
 }
 nav ul li {
 	display: inline;
-	padding: 5px 10px 5px 10px;
+	padding: 5px 20px 5px 20px;
 }
-nav ul li a:link, nav ul li a:visited {
-	color: #954b4b;
+nav ul li a {
+  font-family: Verdana, sans-serif;
+  text-decoration: none;
+	color: white;
 	border-bottom: none;
 	font-weight: bold;
 }
 
-* {box-sizing: border-box}
-body {font-family: Verdana, sans-serif; margin:0}
-.mySlides {display: none}
-img {vertical-align: middle;}
+.mySlides {
+  display: none;
+}
+
+.mySlides img {
+  vertical-align: middle;
+  height: 500px;
+}
 
 /* Slideshow container */
 .slideshow-container {
   max-width: 1000px;
   position: relative;
   margin: auto;
-}
-
-/* Next & previous buttons */
-.prev, .next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  width: auto;
-  padding: 16px;
-  margin-top: -22px;
-  color: white;
-  font-weight: bold;
-  font-size: 18px;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
-}
-
-/* Position the "next button" to the right */
-.next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
-}
-
-/* On hover, add a black background color with a little bit see-through */
-.prev:hover, .next:hover {
-  background-color: rgba(0,0,0,0.8);
+  padding: 20px 0px 0px 20px;
 }
 
 /* Caption text */
