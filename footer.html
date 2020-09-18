@@ -1,0 +1,47 @@
+<script>
+var playlist = ["audios/main_1.mp3", "audios/main_2.mp3", "audios/main_3.mp3", "audios/main_4.mp3",
+                "audios/main_5.mp3", "audios/main_6.mp3", "audios/main_7.mp3", "audios/main_8.mp3"];;
+var audio;
+var position = Math.floor(Math.random()*playlist.length);
+
+$( document ).ready(function() {
+  audio = document.getElementById("audio");
+  audio.addEventListener("ended", nextaudio, false);
+  audio.src = playlist[position];
+  audio.load();
+  audio.play();
+});
+
+function nextaudio() {
+  // position++;
+  // if (position >= playlist.length) {
+  //   position = 0;
+  // }
+  var nextPosition;
+  do {
+    nextPosition = Math.floor(Math.random()*playlist.length);
+  }while (nextPosition == position);
+  position = nextPosition;
+  audio.src = playlist[position];
+  audio.load();
+  audio.play();
+}
+</script>
+
+<table id="footer-table">
+<tr>
+	<td>
+		<p>Copyright &copy 2020 by Visualization group</p>
+		<p>This project is made for educational purposes only</p>
+	</td>
+	<td>
+		<table id="inner-footer-table">
+		<tr>
+			<td><p>Main theme music:</p>
+			<td><audio id="audio" controls></audio></td>
+			<td><a href="#top">Back to top</a>
+		<tr>
+		</table>
+	</td>
+</tr>
+</table>
