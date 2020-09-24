@@ -140,5 +140,18 @@ table table#inner-footer-table td{
 
 table table#inner-footer-table a{
   color: white;
-  font-
+}
+
+canvas {
+  background-color: rgb(207, 190, 151);
+  display: block;
+  text-align: center;
+  margin-top: 12px;
+  margin-bottom: 12px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+  border-color: black;
+  border-style: double;
+  border-width: thick;
 }
