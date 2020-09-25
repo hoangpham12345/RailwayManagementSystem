@@ -13,12 +13,12 @@ RailMap.keyDown = function(event) {
 }
 
 RailMap.mouseDown = function(event) {
-  RailMap.mouseX = event.layerX;
-  RailMap.mouseY = event.layerY;
+  let canvas = document.getElementById('map');
+  RailMap.mouseX = event.offsetX - parseFloat($(canvas).css('padding-left'));
+  RailMap.mouseY = event.offsetY - parseFloat($(canvas).css('padding-top'));
 
   let date = new Date();
   let str = date.getHours() + " : " + date.getMinutes() + " : " + date.getSeconds();
-  console.log(date);
 }
 
 RailMap.setup = function(){
@@ -26,42 +26,38 @@ RailMap.setup = function(){
   canvas.onclick = RailMap.mouseDown;
   canvas.setAttribute("tabindex", 0);
   canvas.addEventListener('keydown', RailMap.keyDown);
-  RailMap.stations = [];
-  RailMap.addStation(1, 1);
-  RailMap.addStation(3, 3);
-  RailMap.addStation(12, 3);
-  RailMap.addStation(18, 3);
-  RailMap.addStation(6, 6);
-  RailMap.addStation(6, 12);
-  RailMap.addStation(6, 17);
-  RailMap.addStation(14, 5);
-  RailMap.addStation(8, 14);
-  RailMap.addStation(14, 14);
-  RailMap.addStation(17, 12);
-
+  RailMap.stations = new Map();
+  RailMap.addStation(1, 1, 'A01');
+  RailMap.addStation(3, 3, 'A02');
+  RailMap.addStation(6, 6, 'A03');
+  RailMap.addStation(6, 12, 'A04');
+  RailMap.addStation(6, 17, 'A05');
+  RailMap.addStation(8, 14, 'A06');
+  RailMap.addStation(12, 3, 'B01');
+  RailMap.addStation(18, 3, 'B02');
+  RailMap.addStation(14, 5, 'B03');
+  RailMap.addStation(14, 14, 'C01');
+  RailMap.addStation(17, 12, 'C02');
   RailMap.tracks = [];
-  RailMap.addTrack(0, 1);
-  RailMap.addTrack(1, 2);
-  RailMap.addTrack(2, 3);
-  RailMap.addTrack(4, 1);
-  RailMap.addTrack(4, 5);
-  RailMap.addTrack(5, 6);
-  RailMap.addTrack(2, 7);
-  RailMap.addTrack(5, 8);
-  RailMap.addTrack(8, 9);
-  RailMap.addTrack(9, 10);
+  RailMap.addTrack('A01', 'A02');
+  RailMap.addTrack('A02', 'B01');
+  RailMap.addTrack('B01', 'B02');
+  RailMap.addTrack('A03', 'A01');
+  RailMap.addTrack('A03', 'A04');
+  RailMap.addTrack('A04', 'A05');
+  RailMap.addTrack('B01', 'B03');
+  RailMap.addTrack('A04', 'A06');
+  RailMap.addTrack('A06', 'C01');
+  RailMap.addTrack('C01', 'C02');
   window.requestAnimationFrame(RailMap.display);
-
-  RailMap.trains = [];
-  RailMap.trains.push();
 }
 
-RailMap.addStation = function(xx, yy){
-  RailMap.stations.push({x : xx, y : yy});
+RailMap.addStation = function(x, y, id){
+  RailMap.stations.set(id, {x : x, y : y, id: id});
 }
 
-RailMap.addTrack = function(station1, station2, midpoints){
-  RailMap.tracks.push({a : RailMap.stations[station1], b : RailMap.stations[station2]});
+RailMap.addTrack = function(stationIDa, stationIDb){
+  RailMap.tracks.push({a : RailMap.stations.get(stationIDa), b : RailMap.stations.get(stationIDb)});
 }
 
 RailMap.addTrain = function(station1, station2, time1, time2){
@@ -77,16 +73,12 @@ RailMap.display = function(){
   var canvas = document.getElementById('map');
   var ctx = canvas.getContext('2d');
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  // ctx.fillStyle = 'rgb(207, 184, 145)';
-  // ctx.fillRect(0, 0, canvas.width, canvas.height);
   ctx.drawImage(RailMap.background, 0, 0);
 
   RailMap.displayGrid(canvas);
   RailMap.displayTracks(canvas);
-  for(let t of RailMap.stations)
+  for(let t of RailMap.stations.values())
     RailMap.displayStation(t, canvas);
-  for(let t of RailMap.trains)
-    RailMap.displayTrain(t, canvas);
 
   RailMap.displaySelectedCell(canvas);
   window.requestAnimationFrame(RailMap.display);
@@ -118,11 +110,11 @@ RailMap.displaySelectedCell = function(canvas){
   let x = Math.floor(RailMap.mouseX / u);
   let y = Math.floor(RailMap.mouseY / u);
   ctx.fillRect(x * u, y * u, u, u);
-  ctx.font = "10px Arial";
-  ctx.fillStyle = 'white';
+  ctx.font = "20px Arial";
+  ctx.fillStyle = 'black';
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
-  ctx.fillText("(" + x + ", " + y + ")", x * u + u/2, y * u + u/2);
+  ctx.fillText("(" + x + ", " + y + ")", canvas.width - 40, canvas.height - 20);
 }
 
 RailMap.displayTracks = function(canvas){
@@ -151,7 +143,7 @@ RailMap.displayTrack = function(track, canvas){
 RailMap.displayStation = function(station, canvas){
   let u = canvas.width / RailMap.dim;
   let ctx = canvas.getContext('2d');
-  let radius = u * 0.3;
+  let radius = u * 0.5;
   ctx.lineWidth = 2;
   ctx.strokeStyle = 'black';
   ctx.fillStyle = 'white';
@@ -160,11 +152,11 @@ RailMap.displayStation = function(station, canvas){
   ctx.fill();
   ctx.stroke();
 
-  ctx.font = "10px Arial";
+  ctx.font = "900 10px Arial";
   ctx.fillStyle = 'black';
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
-  ctx.fillText(RailMap.stations.indexOf(station), station.x * u + u/2, station.y * u + u/2);
+  ctx.fillText(station.id, station.x * u + u/2, station.y * u + u/2);
 }
 
 RailMap.displayTrain = function(train, canvas){
