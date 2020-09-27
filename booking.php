@@ -13,6 +13,7 @@
 		<script>$(function(){$("#visual-header").load("header.html")});</script>
 		<script>$(function(){$("#visual-footer").load("footer.html")});</script>
 		<script src="scripts/map.js"></script>
+		<script src="scripts/map_sql_generator.js"></script>
 		<script>window.onload = RailMap.setup;</script>
 	</head>
 	<body>
