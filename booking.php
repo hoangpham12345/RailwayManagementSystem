@@ -21,9 +21,39 @@
 		<header id="top">
 			<div id="visual-header"></div>
 		</header>
-		<section>
-		   <canvas id="map" width="600px" height="600px">
-		</section>
+    <div id="trainlist">
+  		<table>
+        <tr>
+         <th></th>
+  		   <th>ID</th>
+   		   <th>Name</th>
+   		   <th>Status</th>
+   		   <th>Next</th>
+        </tr>
+        <tr>
+         <td><image src="images/trainicon.svg"></td>
+   		   <td>A</td>
+  		   <td>Train 1</td>
+   		   <td>Running</td>
+   		   <td>California</td>
+        </tr>
+        <tr>
+         <td><image src="images/trainicon.svg"></td>
+   		   <td>B</td>
+  		   <td>Train 2</td>
+   		   <td>Running</td>
+   		   <td>Las Vegas</td>
+        </tr>
+        <tr>
+         <td><image src="images/trainicon.svg"></td>
+   		   <td>C</td>
+  		   <td>Train 3</td>
+   		   <td>Waiting</td>
+   		   <td>Oregon</td>
+        </tr>
+  		</table>
+    </div>
+    <canvas id="map" width="600px" height="600px"></canvas>
 		<footer>
 			<div id="visual-footer"></div>
 		</footer>

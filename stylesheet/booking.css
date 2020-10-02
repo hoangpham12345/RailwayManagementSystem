@@ -12,3 +12,41 @@ canvas {
   border-style: double;
   border-width: thick;
 }
+
+#trainlist {
+  margin: 12px;
+  border: 3px solid black;
+  float: left;
+  font-family: "Trebuchet MS";
+  font-size: 18px;
+}
+
+#trainlist table {
+  background: rgb(222, 215, 177);
+  border-collapse: collapse;
+}
+
+#trainlist table tr {
+  border-bottom: 2px solid white;
+}
+
+#trainlist table tr:hover {
+  border-bottom: 2px solid white;
+  background: rgb(235, 181, 94);
+}
+
+#trainlist table tr:nth-child(1) {
+  background: rgb(186, 143, 74);
+}
+
+#trainlist table th {
+
+}
+
+#trainlist table td {
+  padding: 20px;
+}
+
+#trainlist table td:nth-child(1) {
+  width: 50px;
+}
