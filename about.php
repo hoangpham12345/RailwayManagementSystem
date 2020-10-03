@@ -7,15 +7,13 @@
 		<link rel="stylesheet" type="text/css" href="stylesheet/rms.css"></link>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.10.2/p5.js"></script>
-		<script>$(function(){$("#visual-header").load("header.html")});</script>
-		<script>$(function(){$("#visual-footer").load("footer.html")});</script>
 	</head>
 	<body>
-		<header id="top">
-			<div id="visual-header"></div>
-		</header>
-		<footer>
-			<div id="visual-footer"></div>
-		</footer>
+
+		<?php
+		require_once('header.php');
+		require_once('footer.php');
+		?>
+		
 	</body>
 </html>

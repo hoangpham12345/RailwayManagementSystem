@@ -1,0 +1,17 @@
+#query_panel {
+  margin: auto;
+  padding: 100px;
+  width: 60%;
+}
+
+#query {
+  resize: vertical;
+}
+
+#result_table {
+  border-spacing: 20px 5px;
+}
+
+p {
+  font-size
+}
