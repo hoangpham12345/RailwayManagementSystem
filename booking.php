@@ -11,44 +11,72 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.10.2/p5.js"></script>
 		<script src="scripts/map.js"></script>
 		<script src="scripts/map_sql_generator.js"></script>
-		<script>window.onload = RailMap.setup;</script>
+		<script src="scripts/booking.js"></script>
 	</head>
 	<body>
 
     <?php require_once('header.php'); ?>
 
-    <div id="trainlist">
-  		<table>
-        <tr>
-         <th></th>
-  		   <th>ID</th>
-   		   <th>Name</th>
-   		   <th>Status</th>
-   		   <th>Next</th>
-        </tr>
-        <tr>
-         <td><image src="images/trainicon.svg"></td>
-   		   <td>A</td>
-  		   <td>Train 1</td>
-   		   <td>Running</td>
-   		   <td>California</td>
-        </tr>
-        <tr>
-         <td><image src="images/trainicon.svg"></td>
-   		   <td>B</td>
-  		   <td>Train 2</td>
-   		   <td>Running</td>
-   		   <td>Las Vegas</td>
-        </tr>
-        <tr>
-         <td><image src="images/trainicon.svg"></td>
-   		   <td>C</td>
-  		   <td>Train 3</td>
-   		   <td>Waiting</td>
-   		   <td>Oregon</td>
-        </tr>
-  		</table>
-    </div>
+		<div id="leftinfo">
+	    <div id="trainlist" class="listtable">
+	  		<table>
+	        <tr>
+	         <th></th>
+	  		   <th>ID</th>
+	   		   <th>Name</th>
+	   		   <th>Status</th>
+	   		   <th>Next</th>
+	        </tr>
+					<?php
+						function loadTrains(){
+			      	$con = mysqli_connect(SERVER, USERNAME, PASSWORD, DATABASE);
+							if(!$con){
+								echo "Can't create connection";
+								return;
+							}
+
+							$query = "SELECT * FROM train";
+							$result = mysqli_query($con, $query);
+
+							while($row = mysqli_fetch_array($result)){
+								$trainID = $row['id'];
+								$trainName = $row['name'];
+								echo "<tr>";
+								echo "<td><image src='images/trainicon.svg'></td>";
+								echo "<td>$trainID</td>";
+								echo "<td>$trainName</td>";
+								echo "<td>Unknown</td>";
+								echo "<td>Unknown</td>";
+								echo "</tr>";
+							}
+						}
+						loadTrains();
+					?>
+	  		</table>
+	    </div>
+
+			<div id="schedulelist" class="listtable">
+	  		<table>
+	        <tr>
+	         <th></th>
+					 <th>Sequence</th>
+	  		   <th>ID</th>
+	   		   <th>Name</th>
+	   		   <th>Time in</th>
+	   		   <th>Time out</th>
+	        </tr>
+					<tr>
+						<td><image src='images/railstation.svg'></td>
+						<td>1</td>
+						<td>A</td>
+						<td>Station 1</td>
+						<td>15:00</td>
+						<td>15:15</td>
+					</tr>
+	  		</table>
+	    </div>
+		</div>
+
     <canvas id="map" width="600px" height="600px"></canvas>
 
     <?php require_once('footer.php'); ?>

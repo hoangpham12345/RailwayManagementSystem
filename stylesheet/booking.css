@@ -13,40 +13,48 @@ canvas {
   border-width: thick;
 }
 
-#trainlist {
+#leftinfo {
+  float: left;
+  height: 600px;
+  overflow-y: auto;
+  margin: 10px;
+}
+
+.listtable {
   margin: 12px;
   border: 3px solid black;
-  float: left;
   font-family: "Trebuchet MS";
   font-size: 18px;
+  width: 800px;
 }
 
-#trainlist table {
+.listtable table {
   background: rgb(222, 215, 177);
+  width: 100%;
   border-collapse: collapse;
+  text-align: center;
 }
 
-#trainlist table tr {
+.listtable table tr {
   border-bottom: 2px solid white;
 }
 
-#trainlist table tr:hover {
-  border-bottom: 2px solid white;
+.listtable table tr:hover {
   background: rgb(235, 181, 94);
 }
 
-#trainlist table tr:nth-child(1) {
+.listtable table tr:nth-child(1) {
   background: rgb(186, 143, 74);
 }
 
-#trainlist table th {
+.listtable table th {
 
 }
 
-#trainlist table td {
+.listtable table td {
   padding: 20px;
 }
 
-#trainlist table td:nth-child(1) {
+.listtable table td:nth-child(1) {
   width: 50px;
 }
