@@ -29,6 +29,19 @@ function updateSchedule(){
 
   let scheduleList = document.getElementById('schedulelist');
   scheduleList.innerHTML = request.responseText;
+  let trainlist = document.getElementById("trainlist");
+  trainlist.classList.add("hiding");
+  scheduleList.classList.remove("hiding");
+  let backBtn = document.getElementById('backbutton');
+  backBtn.addEventListener('click', () => {backToTrainList()});
+  console.log(backBtn);
+}
+
+function backToTrainList(){
+  let trainlist = document.getElementById("trainlist");
+  trainlist.classList.remove("hiding");
+  let scheduleList = document.getElementById('schedulelist');
+  scheduleList.classList.add("hiding");
 }
 
 function createRequest() {

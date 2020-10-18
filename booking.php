@@ -18,7 +18,7 @@
     <?php require_once('header.php'); ?>
 
 		<div id="leftinfo">
-	    <div id="trainlist" class="listtable">
+	    <div id="trainlist" class="listtable scrollpane">
 	  		<table>
 	        <tr>
 	         <th></th>
@@ -55,26 +55,7 @@
 	  		</table>
 	    </div>
 
-			<div id="schedulelist" class="listtable">
-	  		<table>
-	        <tr>
-	         <th></th>
-					 <th>Sequence</th>
-	  		   <th>ID</th>
-	   		   <th>Name</th>
-	   		   <th>Time in</th>
-	   		   <th>Time out</th>
-	        </tr>
-					<tr>
-						<td><image src='images/railstation.svg'></td>
-						<td>1</td>
-						<td>A</td>
-						<td>Station 1</td>
-						<td>15:00</td>
-						<td>15:15</td>
-					</tr>
-	  		</table>
-	    </div>
+			<div id="schedulelist"></div>
 		</div>
 
     <canvas id="map" width="600px" height="600px"></canvas>
