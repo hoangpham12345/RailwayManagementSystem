@@ -3,7 +3,10 @@ window.onload = function(){
   RailMap.setup();
   let trainlist = document.getElementById("trainlist");
   let rows = trainlist.querySelectorAll('table tr');
+  rows = Array.prototype.slice.call(rows);
   for(let r of rows){
+    if(rows.indexOf(r) == 0)
+      continue;
     r.onmousedown = ()=>{
       requestSchedule(r.children[1].innerHTML)
     };
