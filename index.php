@@ -4,7 +4,6 @@
 		<meta charset="utf-8">
 		<title>Railway Management System</title>
 		<link rel="icon" href="images/icon.svg"></link>
-		<link rel="stylesheet" type="text/css" href="stylesheet/rms.css"></link>
 		<link rel="stylesheet" type="text/css" href="stylesheet/index.css"></link>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.10.2/p5.js"></script>

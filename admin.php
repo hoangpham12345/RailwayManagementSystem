@@ -1,5 +1,5 @@
 <?php
-  require_once('authorize.php');
+  require_once('php/authorize.php');
 ?>
 
 <!DOCTYPE html>
@@ -8,7 +8,6 @@
     <meta http-equiv="Content-Type" charset="utf-8">
 		<title>Railway Management System</title>
 		<link rel="icon" href="images/icon.svg"></link>
-		<link rel="stylesheet" type="text/css" href="stylesheet/rms.css"></link>
     <link rel="stylesheet" type="text/css" href="stylesheet/admin.css"></link>
   </head>
   <body>

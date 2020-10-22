@@ -20,7 +20,7 @@ function requestSchedule(trainID){
     return;
   }
 
-  let url = 'get_schedule.php?trainid=' + trainID;
+  let url = 'php/get_schedule.php?trainid=' + trainID;
   request.open("GET", url, true);
   request.onreadystatechange = updateSchedule;
   request.send(null);

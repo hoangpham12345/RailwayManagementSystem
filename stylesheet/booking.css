@@ -1,3 +1,4 @@
+@import url("rms.css");
 
 canvas {
   background-color: rgb(207, 190, 151);
@@ -14,7 +15,6 @@ canvas {
 }
 
 .scrollpane {
-  max-height: 500px;
   overflow-y: auto;
 }
 
@@ -23,6 +23,33 @@ canvas {
   float: left;
   margin: 10px;
   width: 800px;
+}
+
+#usertab {
+  font-family: Candara;
+  font-size: 20px;
+  font-weight: bold;
+  color: black;
+  background: #c09859;
+  border: 3px solid black;
+  margin-bottom: 5px;
+  height: 30px;
+  border-radius: 10px 10px 0px 0px;
+}
+
+#usertab table {
+  margin: 0px;
+  text-align: center;
+  width: 100%;
+}
+
+#usertab table th:first-child {
+  border-right: 3px solid white;
+  width: 50%;
+}
+
+#usertab table th.selected {
+  color: white;
 }
 
 #schedule_traindesc {
@@ -39,7 +66,7 @@ canvas {
 }
 
 #schedule_traindesc table th {
-  padding: 20px;
+  padding: 5px 20px 5px 20px;
 }
 
 #schedule_traindesc table th img {
@@ -59,6 +86,7 @@ canvas {
   border: 3px solid black;
   font-family: "Trebuchet MS";
   font-size: 18px;
+  max-height: 500px;
 }
 
 .listtable table {
