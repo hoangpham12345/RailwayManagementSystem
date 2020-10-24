@@ -52,6 +52,37 @@ canvas {
   color: white;
 }
 
+#booktab {
+  font: 18px sans-serif;
+  font-weight: bold;
+  border: 3px solid black;
+  background: rgb(222, 215, 177);
+  padding: 10px;
+}
+
+#booktab table {
+  width: 100%;
+}
+
+#booktab table td {
+  width: 50%;
+  padding: 10px;
+  /* border: 2px solid blue; */
+}
+
+#booktab table td:first-child {
+  text-align: right;
+}
+
+#booktab table td:last-child {
+  text-align: left;
+}
+
+#booktab input[type="submit"]{
+  width: 100px;
+  height: 30px;
+}
+
 #schedule_traindesc {
   background: rgb(222, 215, 177);
   border: 3px solid black;

@@ -1,7 +1,9 @@
 
 window.onload = function(){
+  document.getElementById('searchtabnav').addEventListener('click', searchTabClicked);
+  document.getElementById('booktabnav').addEventListener('click', bookTabClicked);
   RailMap.setup();
-  let trainlist = document.getElementById("trainlist");
+  let trainlist = document.getElementById('trainlist');
   let rows = trainlist.querySelectorAll('table tr');
   rows = Array.prototype.slice.call(rows);
   for(let r of rows){
@@ -11,6 +13,20 @@ window.onload = function(){
       requestSchedule(r.children[1].innerHTML)
     };
   }
+}
+
+function searchTabClicked(){
+  document.getElementById('booktab').classList.add('hiding');
+  document.getElementById('searchtab').classList.remove('hiding');
+  document.getElementById('booktabnav').classList.remove('selected');
+  document.getElementById('searchtabnav').classList.add('selected');
+}
+
+function bookTabClicked() {
+  document.getElementById('searchtab').classList.add('hiding');
+  document.getElementById('booktab').classList.remove('hiding');
+  document.getElementById('searchtabnav').classList.remove('selected');
+  document.getElementById('booktabnav').classList.add('selected');
 }
 
 function requestSchedule(trainID){
@@ -37,7 +53,6 @@ function updateSchedule(){
   scheduleList.classList.remove("hiding");
   let backBtn = document.getElementById('backbutton');
   backBtn.addEventListener('click', () => {backToTrainList()});
-  console.log(backBtn);
 }
 
 function backToTrainList(){
