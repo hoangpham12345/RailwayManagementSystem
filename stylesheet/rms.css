@@ -37,6 +37,9 @@ nav ul li {
 	display: inline;
 	padding: 5px 40px 5px 40px;
 }
+nav ul li.selected {
+  background: gray;
+}
 nav ul li a {
   font-family: Verdana, sans-serif;
   text-decoration: none;

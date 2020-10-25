@@ -1,4 +1,11 @@
-<?php require_once('php/connection_var.php'); ?>
+<?php
+	require_once('php/connection_var.php');
+	$con = mysqli_connect(SERVER, USERNAME, PASSWORD, DATABASE);
+	if(!$con){
+		echo "Can't create connection";
+		return;
+	}
+?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -38,12 +45,7 @@
 		        </tr>
 						<?php
 							function loadTrains(){
-				      	$con = mysqli_connect(SERVER, USERNAME, PASSWORD, DATABASE);
-								if(!$con){
-									echo "Can't create connection";
-									return;
-								}
-
+								global $con;
 								$query = "SELECT * FROM train";
 								$result = mysqli_query($con, $query);
 
@@ -72,39 +74,51 @@
 					<tr>
 						<td>From Station</td>
 						<td>
-							<input list="from_station_list" name="from_station" id="from_station_field">
-						  <datalist id="from_station_list">
-						    <option value="A01">
-						    <option value="A02">
-						    <option value="A03">
-						    <option value="A04">
-						    <option value="A05">
-						  </datalist>
+							<select id="from_station_field" name="from_station">
+								<?php
+									function stationOptions(){
+										global $con;
+										$query = "SELECT * FROM station";
+										$result = mysqli_query($con, $query);
+										while($row = mysqli_fetch_array($result)){
+											$stationID = $row['id'];
+											$stationName = $row['name'];
+											echo "<option>$stationID ($stationName)</option>";
+										}
+									}
+									stationOptions();
+								?>
+							</select>
 						</td>
 					</tr>
 					<tr>
 						<td>To Station</td>
 						<td>
-							<input list="to_station_list" name="to_station" id="to_station_field">
-						  <datalist id="to_station_list">
-						    <option value="B01">
-						    <option value="B02">
-						    <option value="B03">
-						    <option value="B04">
-						    <option value="B05">
-						  </datalist>
+							<select id="to_station_field" name="to_station">
+								<?php
+									stationOptions();
+								?>
+							</select>
 						</td>
 					</tr>
 					<tr>
 						<td>Train</td>
 						<td>
-							<input list="avai_train_list" name="train" id="train_field">
-						  <datalist id="avai_train_list">
-						    <option value="TA01">
-						    <option value="TB02">
-						    <option value="TA05">
-						    <option value="TC02">
-						  </datalist>
+							<select id="train_field" name="train">
+								<?php
+									function findTrains(){
+										global $con;
+										$query = "SELECT * FROM train";
+										$result = mysqli_query($con, $query);
+										while($row = mysqli_fetch_array($result)){
+										 	$trainID= $row['id'];
+											$trainName = $row['name'];
+											echo "<option>$trainID ($trainName)</option>";
+										}
+									}
+									findTrains();
+								?>
+							</select>
 						</td>
 					</tr>
 					<tr>

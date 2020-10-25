@@ -13,6 +13,9 @@ window.onload = function(){
       requestSchedule(r.children[1].innerHTML)
     };
   }
+
+  // BOOKING FORM
+  
 }
 
 function searchTabClicked(){
