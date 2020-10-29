@@ -9,7 +9,7 @@
 
   //for using in Azure
   function server_var(){
-    define('SERVER', 'localhost');
+    define('SERVER', '127.0.0.1.51119');
     define('USERNAME', 'azure');
     define('PASSWORD', '6#vWHD_$');
     define('DATABASE', 'localdb');
