@@ -13,6 +13,23 @@ RailMap.keyDown = function(event) {
       RailMap.gridActive = !RailMap.gridActive;
   }
 
+  if(event.key == "t"){
+      let request = createRequest();
+      if(!request){
+        alert("Can't create request");
+        return;
+      }
+
+      let url = 'php/get_train_location.php?trainid=' + 'TA01';
+      request.open("GET", url, true);
+      request.onreadystatechange = function(){
+        if(request.readyState != 4 || request.status != 200)
+          return;
+        console.log(request.responseText);
+      };
+      request.send(null);
+  }
+
   // if(event.key == "s"){
   //   console.log(RailMap.generateSQL());
   // }
@@ -69,6 +86,7 @@ RailMap.setup = function(){
   RailMap.addTrack('A04', 'A06');
   RailMap.addTrack('A06', 'C01');
   RailMap.addTrack('C01', 'C02');
+  RailMap.refreshTrains();
   window.requestAnimationFrame(RailMap.display);
 }
 
@@ -80,13 +98,36 @@ RailMap.addTrack = function(stationIDa, stationIDb){
   RailMap.tracks.push({a : RailMap.stations.get(stationIDa), b : RailMap.stations.get(stationIDb)});
 }
 
-RailMap.addTrain = function(station1, station2, time1, time2){
-  RailMap.trains.push({
-    s1 : RailMap.stations[station1],
-    s2 : RailMap.stations[station2],
-    t1 : time1,
-    t2 : time2
+RailMap.addTrain = function(id, stationIDa, stationIDb, lerpingValue){
+  RailMap.trains.set(id, {
+    id : id,
+    s1 : RailMap.stations.get(stationIDa),
+    s2 : RailMap.stations.get(stationIDb),
+    lerp: lerpingValue
   });
+}
+
+RailMap.refreshTrains = function(){
+  RailMap.trains = new Map();
+
+  let request = createRequest();
+  if(!request){
+    alert("Can't create request");
+    return;
+  }
+
+  let url = 'php/get_train_location.php?';
+  request.open("GET", url, true);
+  request.onreadystatechange = function(){
+    if(request.readyState != 4 || request.status != 200)
+      return;
+    let data = JSON.parse(request.responseText);
+    for(let train of data){
+      RailMap.addTrain(train.trainID, train.stationA, train.stationB, train.lerp);
+    }
+  };
+  request.send(null);
+
 }
 
 // =========================================================== DISPLAYS
@@ -101,6 +142,7 @@ RailMap.display = function(){
   RailMap.displayTracks(canvas);
   for(let t of RailMap.stations.values())
     RailMap.displayStation(t, canvas);
+  RailMap.displayTrains(canvas);
 
   RailMap.displaySelectedCell(canvas);
   window.requestAnimationFrame(RailMap.display);
@@ -182,15 +224,40 @@ RailMap.displayStation = function(station, canvas){
   ctx.fillText(station.id, station.x * u + u/2, station.y * u + u/2);
 }
 
-RailMap.displayTrain = function(train, canvas){
+RailMap.displayTrains = function(canvas){
   let u = canvas.width / RailMap.dim;
   let ctx = canvas.getContext('2d');
   let radius = u * 0.3;
   ctx.lineWidth = 2;
-  ctx.strokeStyle = 'black';
-  ctx.fillStyle = 'red';
-  ctx.beginPath();
-  ctx.arc(train.station.x * u + u/2, train.station.y * u + u/2, radius, 0, 2 * Math.PI);
-  ctx.fill();
-  ctx.stroke();
+  let lerp = function(a, b, l){
+    return a + (b-a) * l;
+  }
+
+  for(let train of RailMap.trains.values()){
+    let x = lerp(train.s1.x, train.s2.x, train.lerp);
+    let y = lerp(train.s1.y, train.s2.y, train.lerp);
+    let xCan = x * u + u/2;
+    let yCan = y * u + u/2;
+    ctx.strokeStyle = 'black';
+    ctx.fillStyle = 'red';
+    ctx.beginPath();
+    ctx.arc(xCan, yCan, radius, 0, 2 * Math.PI);
+    ctx.fill();
+    ctx.stroke();
+
+    let offsetY = 25;
+    ctx.fillStyle = 'white';
+    ctx.strokeStyle = 'black';
+    let boxW = 40;
+    let boxH = 20;
+    ctx.beginPath();
+    ctx.rect(xCan - boxW/2, yCan - boxH/2 - offsetY, boxW, boxH);
+    ctx.fill();
+    ctx.stroke();
+    ctx.font = "900 10px Arial";
+    ctx.fillStyle = 'black';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(train.id, xCan, yCan - offsetY)
+  }
 }
