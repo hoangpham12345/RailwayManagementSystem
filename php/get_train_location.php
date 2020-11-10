@@ -12,8 +12,8 @@
 ?>
 
 <?php
-  date_default_timezone_set('Asia/Ho_Chi_Minh');
   function getTrainLoc($trainID){
+    date_default_timezone_set('Asia/Ho_Chi_Minh');
     global $con;
     $query = "SELECT * FROM schedule WHERE train = '$trainID' ORDER BY sequence_number";
     $result = mysqli_query($con, $query);
@@ -39,6 +39,8 @@
       $timeA = $timeout;
     }
     $lerp = ($currentTime - $timeA) / ($timeB - $timeA);
+    if($stationA == $stationB)
+      $lerp = 1;
     $trainLoc = array("trainID"=>$trainID, "stationA"=>$stationA, "stationB"=>$stationB, "lerp"=>$lerp);
     return $trainLoc;
   }

@@ -41,9 +41,10 @@
 		  		   <th>ID</th>
 		   		   <th>Name</th>
 		   		   <th>Status</th>
-		   		   <th>Next</th>
+		   		   <th>Current Track</th>
 		        </tr>
 						<?php
+							require_once("php/train_manager.php");
 							function loadTrains(){
 								global $con;
 								$query = "SELECT * FROM train";
@@ -52,12 +53,13 @@
 								while($row = mysqli_fetch_array($result)){
 									$trainID = $row['id'];
 									$trainName = $row['name'];
+									$trainStatus = getTrainStatus($con, $trainID);
 									echo "<tr>";
 									echo "<td><image src='images/trainicon.svg'></td>";
 									echo "<td>$trainID</td>";
 									echo "<td>$trainName</td>";
-									echo "<td>Unknown</td>";
-									echo "<td>Unknown</td>";
+									echo "<td>$trainStatus[0]</td>";
+									echo "<td>$trainStatus[1] - $trainStatus[2]</td>";
 									echo "</tr>";
 								}
 							}

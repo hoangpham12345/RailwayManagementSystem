@@ -12,10 +12,16 @@ window.onload = function(){
     r.onmousedown = ()=>{
       requestSchedule(r.children[1].innerHTML)
     };
+    r.onmouseover = ()=>{
+      RailMap.highlightTrain(r.children[1].innerHTML, 0);
+    };
+    r.onmouseleave = ()=>{
+      RailMap.unHighlightTrain(r.children[1].innerHTML, 0);
+    }
   }
 
   // BOOKING FORM
-  
+
 }
 
 function searchTabClicked(){
@@ -41,8 +47,10 @@ function requestSchedule(trainID){
 
   let url = 'php/get_schedule.php?trainid=' + trainID;
   request.open("GET", url, true);
+  request.trainID = trainID;
   request.onreadystatechange = updateSchedule;
   request.send(null);
+  RailMap.highlightTrain(trainID, 1);
 }
 
 function updateSchedule(){
@@ -63,6 +71,7 @@ function backToTrainList(){
   trainlist.classList.remove("hiding");
   let scheduleList = document.getElementById('schedulelist');
   scheduleList.classList.add("hiding");
+  RailMap.unHighlightTrain(null, 1);
 }
 
 function createRequest() {

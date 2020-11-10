@@ -5,6 +5,7 @@ RailMap.mouseX = RailMap.mouseY = 0;
 RailMap.background = new Image();
 RailMap.background.src = 'images/railmap.svg';
 RailMap.gridActive = false;
+RailMap.selectedTrain = [];
 
 // =========================================================== EVENTS
 
@@ -53,6 +54,20 @@ RailMap.distance = function(stationA, stationB){
   let dx = stationA.x - stationB.x;
   let dy = stationA.y - stationB.y;
   return Math.sqrt(dx * dx + dy * dy);
+}
+
+
+
+RailMap.highlightTrain = function(trainID, slot){
+  RailMap.selectedTrain[slot] = trainID;
+}
+
+RailMap.unHighlightTrain = function(trainID, slot){
+  if(trainID == null){
+    RailMap.selectedTrain[slot] = null;
+  }
+  if(RailMap.selectedTrain[slot] == trainID)
+    RailMap.selectedTrain[slot] = null;
 }
 
 // =========================================================== SETUPS
@@ -140,9 +155,10 @@ RailMap.display = function(){
 
   RailMap.displayGrid(canvas);
   RailMap.displayTracks(canvas);
+  RailMap.displayTrains(canvas);
   for(let t of RailMap.stations.values())
     RailMap.displayStation(t, canvas);
-  RailMap.displayTrains(canvas);
+  RailMap.displayTrainBanner(canvas);
 
   RailMap.displaySelectedCell(canvas);
   window.requestAnimationFrame(RailMap.display);
@@ -211,7 +227,7 @@ RailMap.displayStation = function(station, canvas){
   let radius = selected? u * 0.6 : u * 0.5;
   ctx.lineWidth = 2;
   ctx.strokeStyle = 'black';
-  ctx.fillStyle = selected? 'rgb(232, 205, 130)' : 'white';
+  ctx.fillStyle = selected? 'rgba(232, 205, 130, 0.9)' : 'rgba(255, 255, 255, 0.9)';
   ctx.beginPath();
   ctx.arc(station.x * u + u/2, station.y * u + u/2, radius, 0, 2 * Math.PI);
   ctx.fill();
@@ -234,30 +250,56 @@ RailMap.displayTrains = function(canvas){
   }
 
   for(let train of RailMap.trains.values()){
+    let selected = RailMap.selectedTrain.includes(train.id);
     let x = lerp(train.s1.x, train.s2.x, train.lerp);
     let y = lerp(train.s1.y, train.s2.y, train.lerp);
     let xCan = x * u + u/2;
     let yCan = y * u + u/2;
     ctx.strokeStyle = 'black';
-    ctx.fillStyle = 'red';
+    ctx.fillStyle = selected? 'rgb(0, 255, 0)' : 'red';
     ctx.beginPath();
     ctx.arc(xCan, yCan, radius, 0, 2 * Math.PI);
     ctx.fill();
     ctx.stroke();
+  }
+}
 
-    let offsetY = 25;
-    ctx.fillStyle = 'white';
-    ctx.strokeStyle = 'black';
-    let boxW = 40;
-    let boxH = 20;
-    ctx.beginPath();
-    ctx.rect(xCan - boxW/2, yCan - boxH/2 - offsetY, boxW, boxH);
-    ctx.fill();
-    ctx.stroke();
-    ctx.font = "900 10px Arial";
-    ctx.fillStyle = 'black';
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    ctx.fillText(train.id, xCan, yCan - offsetY)
+RailMap.displayTrainBanner = function(canvas){
+  let u = canvas.width / RailMap.dim;
+  let ctx = canvas.getContext('2d');
+  let radius = u * 0.3;
+  ctx.lineWidth = 2;
+  let lerp = function(a, b, l){
+    return a + (b - a) * l;
+  }
+
+  for(let train of RailMap.trains.values()){
+      let selected = RailMap.selectedTrain.includes(train.id);
+      let x = lerp(train.s1.x, train.s2.x, train.lerp);
+      let y = lerp(train.s1.y, train.s2.y, train.lerp);
+      let xCan = x * u + u/2;
+      let yCan = y * u + u/2;
+      if(!selected)
+        continue;
+      ctx.strokeStyle = 'black';
+      ctx.fillStyle = selected? 'rgb(0, 255, 0)' : 'red';
+      ctx.beginPath();
+      ctx.arc(xCan, yCan, radius, 0, 2 * Math.PI);
+      ctx.fill();
+      ctx.stroke();
+      let offsetY = 25;
+      ctx.fillStyle = 'white';
+      ctx.strokeStyle = 'black';
+      let boxW = 40;
+      let boxH = 20;
+      ctx.beginPath();
+      ctx.rect(xCan - boxW/2, yCan - boxH/2 - offsetY, boxW, boxH);
+      ctx.fill();
+      ctx.stroke();
+      ctx.font = "900 10px Arial";
+      ctx.fillStyle = 'black';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(train.id, xCan, yCan - offsetY)
   }
 }
