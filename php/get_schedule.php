@@ -37,7 +37,7 @@
     </tr>
   </table>
 </div>
-<div class="listtable scrollpane">
+<div id='trains-schedulelist' class="listtable scrollpane">
   <table>
     <tr>
      <th></th>

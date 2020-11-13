@@ -70,6 +70,18 @@ RailMap.unHighlightTrain = function(trainID, slot){
     RailMap.selectedTrain[slot] = null;
 }
 
+RailMap.highlightStation = function(stationID){
+  RailMap.selectedStation = stationID;
+}
+
+RailMap.unHighlightStation = function(stationID){
+  if(stationID == null){
+    RailMap.selectedStation = null;
+  }
+  if(RailMap.selectedStation == stationID)
+    RailMap.selectedStation = null;
+}
+
 // =========================================================== SETUPS
 
 RailMap.setup = function(){
@@ -221,7 +233,7 @@ RailMap.displayTrack = function(track, canvas){
 }
 
 RailMap.displayStation = function(station, canvas){
-  let selected = station.x == RailMap.cellX && station.y == RailMap.cellY;
+  let selected = (station.x == RailMap.cellX && station.y == RailMap.cellY) || station.id == RailMap.selectedStation;
   let u = canvas.width / RailMap.dim;
   let ctx = canvas.getContext('2d');
   let radius = selected? u * 0.6 : u * 0.5;

@@ -64,6 +64,20 @@ function updateSchedule(){
   scheduleList.classList.remove("hiding");
   let backBtn = document.getElementById('backbutton');
   backBtn.addEventListener('click', () => {backToTrainList()});
+
+  let rows = scheduleList.querySelectorAll('#trains-schedulelist table tr');
+  rows = Array.prototype.slice.call(rows);
+  for(let r of rows){
+    if(rows.indexOf(r) == 0)
+      continue;
+    r.onmouseover = ()=>{
+      RailMap.highlightStation(r.children[2].innerHTML);
+    };
+    r.onmouseleave = ()=>{
+      RailMap.unHighlightStation(r.children[2].innerHTML);
+    }
+  }
+
 }
 
 function backToTrainList(){
