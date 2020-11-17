@@ -10,7 +10,7 @@ window.onload = function(){
     if(rows.indexOf(r) == 0)
       continue;
     r.onmousedown = ()=>{
-      requestSchedule(r.children[1].innerHTML)
+      requestSchedule(r.children[1].innerHTML);
     };
     r.onmouseover = ()=>{
       RailMap.highlightTrain(r.children[1].innerHTML, 0);
@@ -47,12 +47,15 @@ function findRoute(){
     alert("Can't create request!");
     return;
   }
-  let url = 'php/find_route.php?';
+  let fromS = document.getElementById('from_station_field').value;
+  let toS = document.getElementById('to_station_field').value;
+  let url = 'php/find_route.php?fromstation=' + fromS + '&tostation=' + toS;
   request.open("GET", url, true);
   request.onreadystatechange = function(){
     if(request.readyState != 4 || request.status != 200)
       return;
     document.getElementById('route_field').innerHTML = request.responseText;
+    console.log(request.responseText);
   };
   request.send(null);
 }

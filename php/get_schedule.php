@@ -17,10 +17,14 @@
             echo mysqli_error($con);
             return;
           }
+          require_once("train_manager.php");
           if($row = mysqli_fetch_array($result)){
             $trainName = $row['name'];
+            $trainStatus = getTrainStatus($con, $trainID);
             echo "<th>$trainID</th>";
             echo "<th>$trainName</th>";
+            echo "<th>$trainStatus[0]</th>";
+            echo "<th>$trainStatus[1] - $trainStatus[2]</th>";
           }
         }
         loadHeading();

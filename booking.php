@@ -80,7 +80,7 @@
 										while($row = mysqli_fetch_array($result)){
 											$stationID = $row['id'];
 											$stationName = $row['name'];
-											echo "<option>$stationID ($stationName)</option>";
+											echo "<option value='$stationID'>$stationID ($stationName)</option>";
 										}
 									}
 									stationOptions();
