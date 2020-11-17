@@ -1,10 +1,5 @@
 <?php
-	require_once('php/connection_var.php');
-	$con = mysqli_connect(SERVER, USERNAME, PASSWORD, DATABASE);
-	if(!$con){
-		echo "Can't create connection";
-		return;
-	}
+	require_once('php/database_connect.php');
 ?>
 <!DOCTYPE html>
 <html>
@@ -103,23 +98,15 @@
 							</select>
 						</td>
 					</tr>
+
+					<tr>
+						<td colspan="2" style="text-align: center"><input type="button" id="findroutebtn" value="Find Route"></td>
+					</tr>
+
 					<tr>
 						<td>Train</td>
 						<td>
-							<select id="train_field" name="train">
-								<?php
-									function findTrains(){
-										global $con;
-										$query = "SELECT * FROM train";
-										$result = mysqli_query($con, $query);
-										while($row = mysqli_fetch_array($result)){
-										 	$trainID= $row['id'];
-											$trainName = $row['name'];
-											echo "<option>$trainID ($trainName)</option>";
-										}
-									}
-									findTrains();
-								?>
+							<select id="route_field" name="train">
 							</select>
 						</td>
 					</tr>

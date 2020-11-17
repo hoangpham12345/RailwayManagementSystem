@@ -21,7 +21,10 @@ window.onload = function(){
   }
 
   // BOOKING FORM
-
+  let deleteRoute = function () {document.getElementById('route_field').innerHTML = "";};
+  document.getElementById('from_station_field').addEventListener('change', deleteRoute);
+  document.getElementById('to_station_field').addEventListener('change', deleteRoute);
+  document.getElementById('findroutebtn').addEventListener('click', findRoute);
 }
 
 function searchTabClicked(){
@@ -36,6 +39,22 @@ function bookTabClicked() {
   document.getElementById('booktab').classList.remove('hiding');
   document.getElementById('searchtabnav').classList.remove('selected');
   document.getElementById('booktabnav').classList.add('selected');
+}
+
+function findRoute(){
+  let request = createRequest();
+  if(!request){
+    alert("Can't create request!");
+    return;
+  }
+  let url = 'php/find_route.php?';
+  request.open("GET", url, true);
+  request.onreadystatechange = function(){
+    if(request.readyState != 4 || request.status != 200)
+      return;
+    document.getElementById('route_field').innerHTML = request.responseText;
+  };
+  request.send(null);
 }
 
 function requestSchedule(trainID){

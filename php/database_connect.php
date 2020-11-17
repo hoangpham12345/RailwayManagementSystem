@@ -17,4 +17,15 @@
 
   // local_var();
   server_var();
+
+  function connect(){
+    global $con;
+    $con = mysqli_connect(SERVER, USERNAME, PASSWORD, DATABASE);
+    if(!$con){
+      echo "Can't create connection";
+      return;
+    }
+  }
+
+  connect();
 ?>

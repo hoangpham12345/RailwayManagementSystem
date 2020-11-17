@@ -1,14 +1,5 @@
 <?php
-  function connect(){
-    global $con;
-    require_once('connection_var.php');
-    $con = mysqli_connect(SERVER, USERNAME, PASSWORD, DATABASE);
-    if(!$con){
-      echo "Can't create connection";
-      return;
-    }
-  }
-  connect();
+  require_once('database_connect.php');
 ?>
 
 <div id='schedule_traindesc'>
