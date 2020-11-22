@@ -55,7 +55,6 @@ function findRoute(){
     if(request.readyState != 4 || request.status != 200)
       return;
     document.getElementById('route_field').innerHTML = request.responseText;
-    console.log(request.responseText);
   };
   request.send(null);
 }

@@ -26,7 +26,6 @@ RailMap.keyDown = function(event) {
       request.onreadystatechange = function(){
         if(request.readyState != 4 || request.status != 200)
           return;
-        console.log(request.responseText);
       };
       request.send(null);
   }
