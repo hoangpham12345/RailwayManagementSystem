@@ -11,7 +11,8 @@
 					<tr>
 						<td><p>Main theme music:</p>
 						<td>
-			        <iframe id=" audio" src="https://hoangpham12345.github.io/RMS-audios/" title="RMS-audios"
+			        <!-- <iframe id="audio" src="https://hoangpham12345.github.io/RMS-audios/" title="RMS-audios" -->
+					<iframe id="audio" title="RMS-audios"
 			        height="65px" width="310px" scrolling="no" style="border:none"></iframe>
 			      </td>
 						<td><a href="#top">Back to top</a>
@@ -22,3 +23,9 @@
 		</table>
 	</div>
 </footer>
+
+<script>
+	window.addEventListener("load", function(){
+		document.getElementById("audio").src = "https://hoangpham12345.github.io/RMS-audios/";
+	}, false);
+</script>
