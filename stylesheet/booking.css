@@ -1,8 +1,12 @@
 @import url("rms.css");
 
+body {
+  text-align: center;
+}
+
 canvas {
   background-color: rgb(207, 190, 151);
-  display: block;
+  display: inline-block;
   text-align: center;
   margin-top: 12px;
   margin-bottom: 12px;
@@ -16,12 +20,13 @@ canvas {
 
 .scrollpane {
   overflow-y: auto;
+	overscroll-behavior: contain ; /* Prevent SCROLL-CHAINING to parent elements. */
 }
 
 #leftinfo {
+  display: inline-block;
+  vertical-align: top;
   margin: 12px;
-  float: left;
-  margin: 10px;
   width: 800px;
 }
 
@@ -87,7 +92,8 @@ canvas {
   background: rgb(222, 215, 177);
   border: 3px solid black;
   margin-bottom: 4px;
-  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
   border-radius: 10px;
 }
 
@@ -113,11 +119,18 @@ canvas {
   background-position: center;
 }
 
+.heightA {
+  max-height: 582px;
+}
+
+.heightB {
+  max-height: 512px;
+}
+
 .listtable {
   border: 3px solid black;
   font-family: "Trebuchet MS";
   font-size: 18px;
-  max-height: 500px;
 }
 
 .listtable table {
@@ -129,6 +142,7 @@ canvas {
 
 .listtable table tr {
   border-bottom: 2px solid white;
+  height: 20px;
 }
 
 .listtable table tr:hover {

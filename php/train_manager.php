@@ -1,10 +1,11 @@
 <?php
   function getCurrentTime() {
-    return time(); //- (3600 * 2);
+    date_default_timezone_set('Asia/Ho_Chi_Minh');
+    return time();
+    // return mktime(2,20,0,11,23,2020);0
   }
 
   function getTrainLoc($trainID){
-    date_default_timezone_set('Asia/Ho_Chi_Minh');
     global $con;
     $query = "SELECT * FROM schedule WHERE train = '$trainID' ORDER BY sequence_number";
     $result = mysqli_query($con, $query);
@@ -34,8 +35,10 @@
     }
     $lerp = ($currentTime - $timeA) / ($timeB - $timeA);
     if($stationB == null){
-      $status = 'Stopped';
       $stationB = $stationA;
+    }
+    if($stationA == null){
+      $stationA = $stationB;
     }
     if($stationA == $stationB)
       $lerp = 1;
@@ -44,7 +47,6 @@
   }
 
   function getTrainStatus($con, $trainID){
-    date_default_timezone_set('Asia/Ho_Chi_Minh');
     $query = "SELECT * FROM schedule WHERE train = '$trainID' ORDER BY sequence_number";
     $result = mysqli_query($con, $query);
     $stationA = null;
@@ -67,6 +69,10 @@
     if($stationB == null){
       $status = 'Stopped';
       $stationB = $stationA;
+    }
+    if($stationA == null){
+      $status = 'Stopped';
+      $stationA = $stationB;
     }
     return array($status, $stationA, $stationB);
   }

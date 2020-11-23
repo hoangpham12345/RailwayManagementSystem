@@ -29,10 +29,10 @@
 			</div>
 
 			<div id="searchtab">
-		    <div id="trainlist" class="listtable scrollpane">
+		    <div id="trainlist" class="listtable scrollpane heightA">
 		  		<table>
 		        <tr>
-		         <th></th>
+		         <th>Train</th>
 		  		   <th>ID</th>
 		   		   <th>Name</th>
 		   		   <th>Status</th>

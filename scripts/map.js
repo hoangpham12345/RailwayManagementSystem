@@ -30,9 +30,9 @@ RailMap.keyDown = function(event) {
       request.send(null);
   }
 
-  // if(event.key == "s"){
-  //   console.log(RailMap.generateSQL());
-  // }
+  if(event.key == "s"){
+    // console.log(RailMap.generateSQL());
+  }
 }
 
 RailMap.mouseDown = function(event) {

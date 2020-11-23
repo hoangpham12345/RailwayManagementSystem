@@ -3,32 +3,45 @@ RailMap.generateSQL = function() {
   schedules[0] = {
     id: 'TA01',
     path: ['A01', 'A02', 'A03', 'A04', 'A05', 'A04', 'A06', 'C01', 'C02', 'C01', 'A06', 'A04', 'A03', 'A02', 'A01']
-  }
+  };
   schedules[1] = {
     id: 'TA05',
     path: ['A05', 'A04', 'A03', 'A02', 'A01', 'A02', 'B01', 'B02', 'B01', 'A02', 'A03', 'A04', 'A05']
-  }
+  };
   schedules[2] = {
     id: 'TC02',
     path: ['C02', 'C01', 'A06', 'A04', 'A03', 'A02', 'A01', 'A02', 'A03', 'A04', 'A05', 'A04', 'A06', 'C01', 'C02']
-  }
+  };
   schedules[3] = {
     id: 'TB02',
     path: ['B02', 'B01', 'B03', 'B01', 'A02', 'A03', 'A04', 'A05', 'A04', 'A03', 'A02', 'B01', 'B02']
-  }
+  };
+  schedules[4] = {
+    id: 'TB03',
+    path: ['B03', 'B01', 'A02', 'A01', 'A03', 'A04', 'A06', 'C01', 'C02', 'C01', 'A06', 'A04', 'A03', 'A02', 'B01', 'B03']
+  };
+  schedules[5] = {
+    id: 'TA03',
+    path: ['A03', 'A02', 'A01', 'A02', 'A03', 'A04', 'A05', 'A04', 'A03', 'A02', 'B01', 'B02', 'B01', 'A02', 'A03']
+  };
+  schedules[6] = {
+    id: 'TA06',
+    path: ['C01', 'C02', 'C01', 'A06', 'A04', 'A03', 'A02', 'B01', 'B03', 'B01', 'A02', 'A03', 'A04', 'A06']
+  };
 
   let sql = "";
   for(let s of schedules){
     sql += RailMap.generateSQL1(s.id, s.path) + "\n";
+    // console.log(`generatingSQ1(${s.id}, ${s.path})`);
   }
   return sql;
 }
 
 RailMap.generateSQL1 = function(trainID, stations){
   let time = new Date();
-  time.setHours(1, 0, 0);
+  time.setHours(2, 0, 0);
   let cur = RailMap.stations.get(stations[0]);
-  console.log('start: ' + cur.id + ' time-out: ' + RailMap.formatTime(time));
+  // console.log('start: ' + cur.id + ' time-out: ' + RailMap.formatTime(time));
 
   let sql = "";
 
@@ -39,7 +52,7 @@ RailMap.generateSQL1 = function(trainID, stations){
     let dist = RailMap.distance(cur, next);
 
     // Time
-    let minutePerUnit = 20;
+    let minutePerUnit = 16;
     let breakMinute = 5;
     let timeIN = RailMap.getRoundedDate(5, time.getTime() + (dist * minutePerUnit) * 60 * 1000);
     let timeOUT = RailMap.getRoundedDate(5, timeIN.getTime() + breakMinute * 60 * 1000);

@@ -32,10 +32,10 @@
     </tr>
   </table>
 </div>
-<div id='trains-schedulelist' class="listtable scrollpane">
+<div id='trains-schedulelist' class="listtable scrollpane heightB">
   <table>
     <tr>
-     <th></th>
+     <th>Station</th>
      <th>Sequence</th>
      <th>ID</th>
      <th>Name</th>

@@ -2,7 +2,7 @@
 	<div id="visual-header">
 		<table id="headerTable">
 			<tr>
-				<td width="85px"><img src='images/icon1.svg' width='80px' height='80px'></td>
+				<td width="75px"><img src='images/icon1.svg' width='60px' height='60px'></td>
 				<td><p>Railway Management System</p></td>
 			</tr>
 		</table>
