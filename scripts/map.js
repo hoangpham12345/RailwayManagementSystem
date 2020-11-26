@@ -89,35 +89,78 @@ RailMap.setup = function(){
   canvas.onmousemove = RailMap.mouseMoved;
   canvas.setAttribute("tabindex", 0);
   canvas.addEventListener('keydown', RailMap.keyDown);
-  RailMap.stations = new Map();
-  RailMap.addStation(1, 1, 'A01');
-  RailMap.addStation(3, 3, 'A02');
-  RailMap.addStation(6, 6, 'A03');
-  RailMap.addStation(6, 12, 'A04');
-  RailMap.addStation(6, 17, 'A05');
-  RailMap.addStation(8, 14, 'A06');
-  RailMap.addStation(12, 3, 'B01');
-  RailMap.addStation(18, 3, 'B02');
-  RailMap.addStation(14, 5, 'B03');
-  RailMap.addStation(14, 14, 'C01');
-  RailMap.addStation(17, 12, 'C02');
-  RailMap.tracks = [];
-  RailMap.addTrack('A01', 'A02');
-  RailMap.addTrack('A02', 'B01');
-  RailMap.addTrack('B01', 'B02');
-  RailMap.addTrack('A03', 'A01');
-  RailMap.addTrack('A03', 'A04');
-  RailMap.addTrack('A04', 'A05');
-  RailMap.addTrack('B01', 'B03');
-  RailMap.addTrack('A04', 'A06');
-  RailMap.addTrack('A06', 'C01');
-  RailMap.addTrack('C01', 'C02');
-  RailMap.refreshTrains();
+
+  RailMap.stationTrackLoaded = false;
+  RailMap.loadStations();
   window.requestAnimationFrame(RailMap.display);
+  // RailMap.tracks = [];
+  // RailMap.addTrack('A01', 'A02');
+  // RailMap.addTrack('A02', 'B01');
+  // RailMap.addTrack('B01', 'B02');
+  // RailMap.addTrack('A03', 'A01');
+  // RailMap.addTrack('A03', 'A04');
+  // RailMap.addTrack('A04', 'A05');
+  // RailMap.addTrack('B01', 'B03');
+  // RailMap.addTrack('A04', 'A06');
+  // RailMap.addTrack('A06', 'C01');
+  // RailMap.addTrack('C01', 'C02');
 }
 
-RailMap.addStation = function(x, y, id){
-  RailMap.stations.set(id, {x : x, y : y, id: id});
+RailMap.loadStations = function() {
+  RailMap.stations = new Map();
+  RailMap.stationsLoaded = false;
+  let request = createRequest();
+  if(!request){
+    alert("Can't create request");
+    return;
+  }
+  let url = 'php/get_station_list.php';
+  request.open("GET", url, true);
+  request.onreadystatechange = function(){
+    if(request.readyState != 4 || request.status != 200)
+      return;
+    let nameDic = JSON.parse(request.responseText);
+    RailMap.stations = new Map();
+    RailMap.addStation(1, 1, 'A01', nameDic['A01']);
+    RailMap.addStation(3, 3, 'A02', nameDic['A02']);
+    RailMap.addStation(6, 6, 'A03', nameDic['A03']);
+    RailMap.addStation(6, 12, 'A04', nameDic['A04']);
+    RailMap.addStation(6, 17, 'A05', nameDic['A05']);
+    RailMap.addStation(8, 14, 'A06', nameDic['A06']);
+    RailMap.addStation(12, 3, 'B01', nameDic['B01']);
+    RailMap.addStation(18, 3, 'B02', nameDic['B02']);
+    RailMap.addStation(14, 5, 'B03', nameDic['B03']);
+    RailMap.addStation(14, 14, 'C01', nameDic['C01']);
+    RailMap.addStation(17, 12, 'C02', nameDic['C02']);
+    RailMap.loadTracks();
+  };
+  request.send(null);
+}
+
+RailMap.loadTracks = function(){
+  RailMap.tracks = [];
+  let request = createRequest();
+  if(!request){
+    alert("Can't create request");
+    return;
+  }
+  let url = 'php/get_track_list.php';
+  request.open("GET", url, true);
+  request.onreadystatechange = function(){
+    if(request.readyState != 4 || request.status != 200)
+      return;
+    let tracks = JSON.parse(request.responseText);
+    RailMap.tracks = [];
+    for(track of tracks)
+      RailMap.addTrack(track.s1, track.s2);
+    RailMap.refreshTrains();
+    RailMap.stationTrackLoaded = true;
+  };
+  request.send(null);
+}
+
+RailMap.addStation = function(x, y, id, name){
+  RailMap.stations.set(id, {x : x, y : y, id: id, name: name});
 }
 
 RailMap.addTrack = function(stationIDa, stationIDb){
@@ -159,6 +202,11 @@ RailMap.refreshTrains = function(){
 // =========================================================== DISPLAYS
 
 RailMap.display = function(){
+  if(!RailMap.stationTrackLoaded){
+    window.requestAnimationFrame(RailMap.display);
+    return;
+  }
+
   var canvas = document.getElementById('map');
   var ctx = canvas.getContext('2d');
   ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -236,11 +284,12 @@ RailMap.displayStation = function(station, canvas){
   let u = canvas.width / RailMap.dim;
   let ctx = canvas.getContext('2d');
   let radius = selected? u * 0.6 : u * 0.5;
+  let x = station.x * u + u/2, y = station.y * u + u/2;
   ctx.lineWidth = 2;
   ctx.strokeStyle = 'black';
   ctx.fillStyle = selected? 'rgba(232, 205, 130, 0.9)' : 'rgba(255, 255, 255, 0.9)';
   ctx.beginPath();
-  ctx.arc(station.x * u + u/2, station.y * u + u/2, radius, 0, 2 * Math.PI);
+  ctx.arc(x, y, radius, 0, 2 * Math.PI);
   ctx.fill();
   ctx.stroke();
 
@@ -248,7 +297,18 @@ RailMap.displayStation = function(station, canvas){
   ctx.fillStyle = 'black';
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
-  ctx.fillText(station.id, station.x * u + u/2, station.y * u + u/2);
+  ctx.fillText(station.id, x, y);
+  if(selected){
+    let offsetY = 35;
+    let boxW = ctx.measureText(station.name).width + 10, boxH = 20;
+    ctx.fillStyle = 'white';
+    ctx.beginPath();
+    ctx.rect(x - boxW/2, y - boxH/2 + offsetY, boxW, boxH);
+    ctx.fill();
+    ctx.stroke();
+    ctx.fillStyle = 'black';
+    ctx.fillText(station.name, x, y + offsetY)
+  }
 }
 
 RailMap.displayTrains = function(canvas){
@@ -298,6 +358,9 @@ RailMap.displayTrainBanner = function(canvas){
       ctx.arc(xCan, yCan, radius, 0, 2 * Math.PI);
       ctx.fill();
       ctx.stroke();
+
+      if(RailMap.selectedTrain[0] != train.id)
+        continue;
       let offsetY = 25;
       ctx.fillStyle = 'white';
       ctx.strokeStyle = 'black';
