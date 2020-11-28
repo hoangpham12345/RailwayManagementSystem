@@ -33,7 +33,15 @@
       if ($station == $toStation && $train == $startTrain) {
         $endTime = substr($row['time_in'], 0, 5);
         $trainName = $row['name'];
-        echo "<option>[$startTime] - [$endTime] Train: $startTrain ($trainName)</option>";
+        $routeInfo = (object) array (
+          'trainName' => $trainName,
+          'startSeq' => $startSequence,
+          'endSeq' => $sequence,
+          'startTime' => $startTime,
+          'endTime' => $endTime
+        );
+        $routeString = serialize($routeInfo);
+        echo "<option value='$routeString'>[$startTime] - [$endTime] Train: $startTrain ($trainName)</option>";
         $startTrain = null;
         $startSequence = null;
         $startTime = null;

@@ -83,6 +83,12 @@ canvas {
   text-align: left;
 }
 
+#booktab table td.title {
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  color: brown;
+}
+
 #booktab input[type="submit"]{
   width: 100px;
   height: 30px;

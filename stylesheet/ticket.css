@@ -1,0 +1,21 @@
+body {
+  text-align: center;
+}
+
+p {
+  font-family: Georgia, sans-serif;
+  font-weight: bold;
+  color: black;
+}
+
+h1 {
+  margin: 50px;
+  font-family: Georgia, sans-serif;
+  color: brown;
+}
+
+h2 {
+  margin: 50px;
+  font-family: Georgia, sans-serif;
+  color: brown;
+}

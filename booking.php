@@ -66,8 +66,12 @@
 				<div id="schedulelist"></div>
 			</div>
 
-			<form id="booktab" class="hiding" onsubmit="alert('Not implemented yet!');">
+			<form id="booktab" class="hiding" action="ticket.php" method="get">
 				<table>
+					<tr>
+						<td colspan="2" class="title">START & END</td>
+					</tr>
+
 					<tr>
 						<td>From Station</td>
 						<td>
@@ -104,9 +108,13 @@
 					</tr>
 
 					<tr>
+						<td colspan="2" class="title">TRAIN & DATE</td>
+					</tr>
+
+					<tr>
 						<td>Train</td>
 						<td>
-							<select id="route_field" name="train">
+							<select id="route_field" name="route">
 							</select>
 						</td>
 					</tr>
@@ -114,17 +122,18 @@
 						<td>Date</td>
 						<td><input type="date" name="date" id="date_field"></td>
 					</tr>
+
 					<tr>
-						<td>Coach Number</td>
-						<td><input type="number" min="1" name="coach" id="coach_field"></td>
+						<td colspan="2" class="title">PASSENGER INFO</td>
 					</tr>
+
 					<tr>
-						<td>Seat Number</td>
-						<td><input type="number" min="1" name="seat" id="seat_field"></td>
-					</tr>
-					<tr>
-						<td>Passenger Name</td>
+						<td>Your Name</td>
 						<td><input type="text" name="passenger_name" id="passenger_name_field"></td>
+					</tr>
+					<tr>
+						<td>Phone Number</td>
+						<td><input type="tel" name="passenger_phone" id="passenger_phone_field"></td>
 					</tr>
 					<tr>
 						<td colspan="2" style="text-align: center"><input type="submit" value="Book"></td>
