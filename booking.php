@@ -66,7 +66,7 @@
 				<div id="schedulelist"></div>
 			</div>
 
-			<form id="booktab" class="hiding" action="ticket.php" method="get">
+			<form id="booktab" class="hiding" action="ticket.php" method="post">
 				<table>
 					<tr>
 						<td colspan="2" class="title">START & END</td>

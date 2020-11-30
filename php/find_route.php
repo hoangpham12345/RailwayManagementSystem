@@ -34,6 +34,7 @@
         $endTime = substr($row['time_in'], 0, 5);
         $trainName = $row['name'];
         $routeInfo = (object) array (
+          'trainID' => $train,
           'trainName' => $trainName,
           'startSeq' => $startSequence,
           'endSeq' => $sequence,
