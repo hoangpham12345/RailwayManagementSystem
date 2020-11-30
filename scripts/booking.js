@@ -42,19 +42,26 @@ function bookTabClicked() {
 }
 
 function findRoute(){
+  let fromS = document.getElementById('from_station_field').value;
+  let toS = document.getElementById('to_station_field').value;
+  if(fromS == toS){
+    alert("From Station cannot be the same as To Station.\nWhy do you even need take a train? Come on!");
+    return;
+  }
   let request = createRequest();
   if(!request){
     alert("Can't create request!");
     return;
   }
-  let fromS = document.getElementById('from_station_field').value;
-  let toS = document.getElementById('to_station_field').value;
   let url = 'php/find_route.php?fromstation=' + fromS + '&tostation=' + toS;
   request.open("GET", url, true);
   request.onreadystatechange = function(){
     if(request.readyState != 4 || request.status != 200)
       return;
     document.getElementById('route_field').innerHTML = request.responseText;
+    let routeCount = document.getElementById('route_field').length;
+    if(routeCount == 0)
+      alert("Sorry, we cannot find any train that serves your need.\nPerhaps you should break down to multiple trips");
   };
   request.send(null);
 }

@@ -75,7 +75,7 @@
 					<tr>
 						<td>From Station</td>
 						<td>
-							<select id="from_station_field" name="from_station">
+							<select id="from_station_field" name="from_station" required>
 								<?php
 									function stationOptions(){
 										global $con;
@@ -95,7 +95,7 @@
 					<tr>
 						<td>To Station</td>
 						<td>
-							<select id="to_station_field" name="to_station">
+							<select id="to_station_field" name="to_station" required>
 								<?php
 									stationOptions();
 								?>
@@ -114,13 +114,16 @@
 					<tr>
 						<td>Train</td>
 						<td>
-							<select id="route_field" name="route">
+							<select id="route_field" name="route" required>
 							</select>
 						</td>
 					</tr>
 					<tr>
 						<td>Date</td>
-						<td><input type="date" name="date" id="date_field"></td>
+						<?php
+							$tomorrow = date('Y-m-d');
+							echo "<td><input type='date' name='date' id='date_field' min='$tomorrow' required></td>";
+						?>
 					</tr>
 
 					<tr>
@@ -129,11 +132,11 @@
 
 					<tr>
 						<td>Your Name</td>
-						<td><input type="text" name="passenger_name" id="passenger_name_field"></td>
+						<td><input type="text" name="passenger_name" id="passenger_name_field" required></td>
 					</tr>
 					<tr>
 						<td>Phone Number</td>
-						<td><input type="tel" name="passenger_phone" id="passenger_phone_field"></td>
+						<td><input type="tel" name="passenger_phone" id="passenger_phone_field" required></td>
 					</tr>
 					<tr>
 						<td colspan="2" style="text-align: center"><input type="submit" value="Book"></td>
