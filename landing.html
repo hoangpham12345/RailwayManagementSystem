@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Railway Management System</title>
+        <link rel="icon" href="images/icon.svg"></link>
+
+    </head>
+    <body style="margin: 0">
+        <iframe id="loader" src="https://hoangpham12345.github.io/RMS-audios/loader.html" title="RMS-loader"
+            height=100% width=100% scrolling="no" style="position: absolute; border: none; z-index: 2;"></iframe>
+        <iframe id="index" title="Index page"
+			height=100% width=100% style="position: absolute; border: none;"></iframe>
+    </body>
+</html>
+
+<script>
+    document.getElementById("loader").addEventListener("load", function(){
+        console.log("Loader is loaded");
+        document.getElementById("index").src ="index.php";
+    }, false);
+    // document.getElementById("index").addEventListener("load", function(){
+    window.addEventListener("load", function(){
+        document.getElementById("loader").parentNode.removeChild(document.getElementById("loader"));
+        console.log(document.getElementById("index").src);
+    }, true);
+
+</script>
