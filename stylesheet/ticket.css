@@ -1,11 +1,47 @@
 body {
   text-align: center;
+  /* background-image: url('../images/white_rail.png');
+  background-position: center;
+  background-repeat: repeat;
+  background-size: 50px 50px; */
+}
+
+table {
+  display: inline-block;
+  border: 2px solid black;
+  font-size: 25px;
+  background: rgb(245, 238, 215);
+}
+
+table p {
+  color: brown;
+}
+
+table th, td {
+  border: 2px solid rgba(102, 88, 42, 0.3);
+  padding: 10px;
+  text-align: center;
+}
+
+table th {
+  background: rgb(227, 188, 79);
+}
+
+table th p {
+  font-family: Impact, Charcoal, sans-serif;
+  font-size: 30px;
+  letter-spacing: 2px;
+  color: brown;
+}
+
+#backoption {
+  line-height: 1.6;
 }
 
 p {
   font-family: Georgia, sans-serif;
   font-weight: bold;
-  color: black;
+  color: brown;
 }
 
 h1 {

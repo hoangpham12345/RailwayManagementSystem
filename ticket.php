@@ -1,43 +1,20 @@
 <?php
-  $from = $_POST['from_station'];
-  $to = $_POST['to_station'];
-  $route = unserialize($_POST['route']);
-  $name = $_POST['passenger_name'];
-  $phone = $_POST['passenger_phone'];
-  $date = $_POST['date'];
-
-  include_once("php/database_connect.php");
-
-  $query = "SELECT * FROM booking WHERE date = '$date' AND train = '$route->trainID' AND (start_sn < '$route->endSeq' AND end_sn > '$route->startSeq')";
-  $result = mysqli_query($con, $query);
-  $numSeats = 72;
-  $numCoachs = 24;
-  $currentCoach = 1;
-  $currentSeat = 0;
-  while($row = mysqli_fetch_array($result)){
-    $usedCoach = $row['coach'];
-    $usedSeat = $row['seat'];
-    if($currentCoach < $usedCoach){
-      $currentCoach = $usedCoach;
-      $currentSeat = $usedSeat;
-    }
-    if($currentSeat < $usedSeat)
-      $currentSeat = $usedSeat;
-  }
-  $currentSeat ++;
-  if($currentSeat > $numSeats){
-    $currentSeat = 1;
-    $currentCoach ++;
-    if($currentCoach > $numCoachs){
-      // REQUEST MORE COACH
-    }
-  }
-
-  $query = "INSERT INTO booking (date, r_from, r_to, coach, seat, train, start_sn, end_sn, passenger_name, passenger_tel) VALUES ".
-                               "('$date', '$from', '$to', $currentCoach, $currentSeat, '$route->trainID', $route->startSeq, $route->endSeq, '$name', '$phone');";
-  $result = mysqli_query($con, $query);
+  $fromName = $_GET['fromName'];
+  $toName = $_GET['toName'];
+  $from = $_GET['from'];
+  $to = $_GET['to'];
+  $date = $_GET['date'];
+  $startTime = $_GET['startTime'];
+  $endTime = $_GET['endTime'];
+  $trainID = $_GET['trainID'];
+  $trainName = $_GET['trainName'];
+  $seat = $_GET['seat'];
+  $coach = $_GET['coach'];
+  $startSeq = $_GET['startSeq'];
+  $endSeq = $_GET['endSeq'];
+  $name = $_GET['name'];
+  $tel = $_GET['tel'];
 ?>
-
 <html>
   <head>
 		<meta charset="utf-8">
@@ -48,21 +25,55 @@
   </head>
   <body>
     <h1>YOUR BOOKING WAS SUCCESSFUL</h1>
-    <?php
-      echo "<p>So you wanna go from $from to $to</p>";
-      echo "<p>On date $date</p>";
-      echo "<p>And you wanna take the train ". $route->trainName . " from " . $route->startTime . " to " . $route->endTime . "</p>";
-      echo "<p>COACH NUMBER: $currentCoach</p>";
-      echo "<p>SEAT NUMBER: $currentSeat</p>";
-      echo "<p>The sequence numbers are " . $route->startSeq . " - " . $route->endSeq . "</p>";
-      echo "<p>Your name is $name and we will contact your $phone to confirm later</p>";
-      // echo "<p>Query: $query</p>";
-      // echo "<p>Result: $result</p>";
-      if(!$result){
-        $erro = mysqli_error($con);
-        echo "<p>Error: $erro</p>";
-      }
-    ?>
+    <table>
+      <tr>
+        <th colspan = "4">
+          <?php echo "<p> TRAIN TICKET </p>";?>
+        </th>
+      </tr>
+      <tr>
+        <td colspan="4" id="fromto">
+          <?php echo "<p>$fromName ($from) - $toName ($to)</p>";?>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" id="date">
+          <?php echo "<p>$date</p>";?>
+        </td>
+        <td colspan="2" id="time">
+          <?php echo "<p>". $startTime . " - " . $endTime . "</p>";?>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="4" id="train">
+          <?php echo "<p> TRAIN : " . $trainName . " (" . $trainID . ") </p>"?>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" id="seat">
+          <?php echo "<p> Seat Number : " . $seat . "</p>"?>
+        </td>
+        <td colspan="1" id="coach">
+          <?php echo "<p> Coach Number : " . $coach . "</p>"?>
+        </td>
+        <td colspan="2" id="seq">
+          <?php echo "<p> Sequence Numbers : " . $startSeq . " - " . $endSeq . "</p>"?>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" id="passenger_name">
+          <?php echo "<p>Passenger Name : $name</p>"?>
+        </td>
+        <td colspan="2" id="passenger_tel">
+          <?php echo "<p>Passenger Tel : $tel</p>"?>
+        </td>
+      </tr>
+    </table>
     <h2>Thank you for using our service</h2>
+    <div id="backoption">
+      <a href="booking.php">Back to booking page</a>
+      <br>
+      <a href="index.php">Back to home page</a>
+    </div>
   </body>
 </html>
