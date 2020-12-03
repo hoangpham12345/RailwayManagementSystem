@@ -45,7 +45,7 @@ function findRoute(){
   let fromS = document.getElementById('from_station_field').value;
   let toS = document.getElementById('to_station_field').value;
   if(fromS == toS){
-    alert("From Station cannot be the same as To Station.\nWhy do you even need take a train? Come on!");
+    alert("From Station cannot be the same as To Station.\nWhy do you even need to take a train? Come on!");
     return;
   }
   let request = createRequest();

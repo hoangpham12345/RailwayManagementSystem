@@ -132,11 +132,11 @@
 
 					<tr>
 						<td>Your Name</td>
-						<td><input type="text" name="passenger_name" id="passenger_name_field" required></td>
+						<td><input type="text" name="passenger_name" id="passenger_name_field" placeholder="Ex: Jack" required></td>
 					</tr>
 					<tr>
 						<td>Phone Number</td>
-						<td><input type="tel" name="passenger_phone" id="passenger_phone_field" required></td>
+						<td><input type="tel" name="passenger_phone" id="passenger_phone_field" placeholder="Ex: 0796940493" pattern="0{1}[0-9]{9}" required></td>
 					</tr>
 					<tr>
 						<td colspan="2" style="text-align: center"><input type="submit" value="Book"></td>
