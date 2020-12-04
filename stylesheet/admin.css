@@ -1,19 +1,214 @@
-@import url("rms.css");
+body{
+  background-color: aliceblue;
+  margin: 0px;
+  font-family: 'Times New Roman', Times, serif;
+}
 
-#query_panel {
+header{
+  overflow: auto;
+  padding-top: 10px;
+}
+
+header table{
+  padding: px 5px 5px 5px;
+  width: 100%;
+}
+
+/* header table tr td img{
+  margin-right: 0px;
+  margin-left: auto;
+} */
+header table tr td h1{
+  text-align: left;
+}
+
+nav#toolbar {
+  background-color: lightskyblue;
+  margin: 0px;
+  padding: 5px;
+}
+
+ul#list_toolbar{
+  margin: 5px;
+  list-style-type: none;
+  padding: 0px;
+}
+ul#list_toolbar li{
+  display: inline;
+  padding: 5px 30px 5px 30px;
+  color: brown;
+  background-color: lightblue;
+  font-weight: bold;
+  border-style: solid;
+  border-width: 1px;
+  text-align: center;
+  
+}
+
+ul#list_toolbar li:hover{
+  background-color: dodgerblue;
+  color: white;
+}
+
+/* ul#drop_down_list.hidden{
+  display:none;
+} */
+
+.hidden{
+  display:none;
+}
+
+ul#drop_down_list{
+  position: absolute;
+  list-style-type: none;
+  margin:5px;
+  padding: 0px 0px 0px 5px;
+}
+
+ul#drop_down_list li{
+  color: brown;
+  padding: 5px 30px 5px 30px;
+  background-color: lightblue;
+  font-weight: bold;
+  border-style: solid;
+  border-width: 1px;
+  text-align: center;
+}
+
+ul#drop_down_list li:hover{
+  background-color: dodgerblue;
+  color: white;
+}
+
+
+/* These are for simple management tab */
+div#simple_manage_panel{
+  margin: auto;
+  padding: 100px 0px;
+  width: 100%;
+}
+
+div#tables_list {
+  float: left;
+  margin: 5px 5%;
+  /* width: 20%; */
+}
+
+ul#database_tables_list{
+  list-style-type: none;
+  background-color: wheat;
+  padding: 1px;
+}
+
+ul#database_tables_list li{
+  margin: 0px;
+  padding: 5px;
+  border: 2px solid black;
+  border-collapse: collapse;
+}
+
+ul#database_tables_list li:hover{
+  background-color: brown;
+  color: white;
+}
+
+div#display_content{
+  margin: 5px 10% 5px 20%;
+}
+
+div#query_panel {
   margin: auto;
   padding: 100px;
   width: 60%;
 }
 
-#query {
-  resize: vertical;
+p#query_label {
+  font-size: 38px;
+  text-align: center;
+  margin: 5px 0px;
 }
 
-#result_table {
-  border-spacing: 20px 5px;
+textarea#query {
+  height: 150px;
+  width: 99%;
+  font-size: 40px;
+  border-width: 3px;
+  resize: none;
+  padding: 0px;
 }
 
-p {
-  font-size
+
+table#query_buttons {
+  width: 100%
+}
+
+table#query_buttons tr td{
+  width: 50%;
+}
+
+button.query_selection{
+  display: block; 
+  text-align: center; 
+  font-size: 30px;
+  margin:auto;
+  border-width: 3px;
+}
+
+div#result_div {
+  background-color: khaki;
+  width: 60%;
+  margin: auto;
+}
+
+table#result_table, table#result_table tr, table#result_table tr td{
+  border: 2px solid black;
+  border-collapse: collapse; 
+}
+
+table#result_table{
+  width: 100%;
+}
+
+table#result_table tr#result_table_header {
+  background-color: lightsalmon;
+  text-align: center;
+}
+
+
+
+footer {
+  background-color: lightgray;
+  text-align: center;
+  position: fixed;
+  width: 100%;
+  bottom: 0px;
+  border: 2px solid;
+}
+
+footer p {
+  margin: 5px;
+}
+
+/* ::-webkit-input-placeholder {
+  color: red;
+  opacity: 0.1;
+}
+
+::-moz-placeholder {
+  color: red;
+  opacity: 0.1;
+}
+
+:-ms-input-placeholder {
+  color: red;
+  opacity: 0.1;
+} */
+
+::placeholder {
+  color: red;
+  opacity: 0.3;
+}
+
+ul li{
+  cursor: pointer;
 }
