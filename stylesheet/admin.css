@@ -156,8 +156,9 @@ button.query_selection{
 
 div#result_div {
   background-color: khaki;
-  width: 60%;
+  width: 100%;
   margin: auto;
+  /* padding: 0px 0px 100px 0px; */
 }
 
 table#result_table, table#result_table tr, table#result_table tr td{

@@ -58,6 +58,7 @@ function displayDatabaseTables(){
 
 function clearQuery(){
     document.getElementById("query").value = "";
+    document.getElementById("query_indicator").innerHTML = "";
 }
 
 function showSelection(){
@@ -78,6 +79,7 @@ function hideSelection(){
 function displaySimpleManagement(){
     document.getElementById("query_panel").className = "hidden";
     document.getElementById("query").value = "";
+    document.getElementById("query_indicator").innerHTML = "";
     document.getElementById("result_div").innerHTML = "";
 
     document.getElementById("simple_manage_panel").className = "";
@@ -91,6 +93,7 @@ function displayAdvancedQuery(){
     document.getElementById("display_content").innerHTML = "";
 
     document.getElementById("query").value = "";
+    document.getElementById("query_indicator").innerHTML = "";
     document.getElementById("result_div").innerHTML = "";
     document.getElementById("query_panel").className = "";
 

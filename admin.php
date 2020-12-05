@@ -53,12 +53,13 @@
         </tr>
       </table>
       <p id="query_indicator"></p>
+      <div id="result_div"></div>
     </div>
 
-    <div id="result_div"></div>
+    <!-- <div id="result_div" class="hidden"></div> -->
 
     <footer>
-      <p>Copyright &copy 2020 by Visualzation group. All right reserved</p>
+      <p>Copyright &copy 2020 by Visualization group. All right reserved</p>
     </footer>
 
   </body>
