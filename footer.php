@@ -19,6 +19,7 @@
 					<tr>
 					</table>
 				</td>
+      </td>
 			</tr>
 		</table>
 	</div>

@@ -1,21 +1,27 @@
-body{
-  background-color: #f2e6d9;
-  margin: 0;
+
+/* */
+header,footer {
+  box-sizing: border-box;
+
 }
 
-header{
+/* Style the body */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  /*background-color: #f2e6d9;*/
+}
+/* Header/logo Title */
+header {
   overflow: auto;
   padding-top: 10px;
   background-color: #c2843d;
 }
-
 header table{
-  padding: 0px 0px 0px 50px;
-  width: 100%;
   text-align: left;
 }
-
-header p{
+/* Increase the font size of the heading */
+header p {
   font-size: 30px;
   font-weight: bold;
   font-family: Candara;
@@ -23,13 +29,14 @@ header p{
   padding: 0px;
   margin: auto;
 }
-
+/* Style the top navigation bar */
 nav {
-  overflow: auto;
+  overflow:  hidden;
   background-color: #996633;
-	margin: 10px 0px 0px 0px;
+  margin: 10px 0px 0px 0px;
   text-align: left;
 }
+/* Style the navigation bar links */
 nav ul {
 	margin: 0px;
 	list-style-type: none;
@@ -50,6 +57,51 @@ nav ul li a {
 	font-weight: bold;
 }
 
+/* Right-aligned link */
+nav a.right {
+  float:  right;
+}
+
+/* Change color on hover */
+nav a:hover {
+  color: black;
+}
+
+/* Column container */
+.row {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+}
+
+/* Create two unequal columns that sits next to each other */
+/* Sidebar/left column */
+.side {
+  -ms-flex: 30%; /* IE10 */
+  flex: 30%;
+  background-color: #f1f1f1;
+  padding: 20px;
+}
+/*Content*/
+#Content2 {
+   background-color: white;
+   margin-left: 30%;
+   margin-right: 30%;
+   border: 2px dotted white;
+   padding: 10px 10px 10px 10px;
+   font-family: sans-serif;
+
+}
+#Content h1{
+  border-bottom-style:   solid;
+  border-bottom:  2px dotted solid black;
+  padding: 0 20% 0 20%;
+  text-align: left;
+  font-size: 400%;
+}
+
+/* Footer */
 footer{
   background-color: brown;
   color: white;
@@ -69,4 +121,88 @@ table table#inner-footer-table td{
 
 table table#inner-footer-table a{
   color: white;
+}
+
+/* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 700px) {
+  .row {
+    flex-direction: column;
+  }
+}
+
+/* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
+@media screen and (max-width: 400px) {
+  .nav a {
+    float: none;
+    width: 100%;
+  }
+}
+}
+/*Menu button*/
+
+.container {
+  display: inline-block;
+  cursor: pointer;
+}
+
+.bar1, .bar2, .bar3 {
+  width: 35px;
+  height: 5px;
+  background-color: #333;
+  margin: 6px 0;
+  transition: 0.4s;
+}
+
+.change .bar1 {
+  -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+  transform: rotate(-45deg) translate(-9px, 6px);
+}
+
+.change .bar2 {opacity: 0;}
+.change .bar3 {
+  -webkit-transform: rotate(45deg) translate(-8px, -8px);
+  transform: rotate(45deg) translate(-8px, -8px);
+}
+
+#title1{
+  -ms-flex:60%;
+
+}
+
+#Menu-bar {
+  padding-left: 750px;
+  background-color: #c2843d;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right:0;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  overflow:  hidden;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.show {display: block;}
+
+.dropbtn {
+  background-color: #c2843d;
+  color: white;
+  border: none;
+  cursor: pointer;
 }

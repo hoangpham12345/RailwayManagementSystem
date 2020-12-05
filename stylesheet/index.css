@@ -1,20 +1,42 @@
 @import url("rms.css");
-
 .mySlides {
   display: none;
 }
-
 .mySlides img {
   vertical-align: middle;
-  height: 500px;
-}
+  height: 600px;
+  width: 100%;
 
+}
 /* Slideshow container */
 .slideshow-container {
-  max-width: 1000px;
+  max-width: 1600px;
   position: relative;
-  margin: auto;
-  padding: 20px 0px 0px 20px;
+
+  margin: 0 0 0 0;
+  text-align: center;
+}
+@media screen and (min-width: 400px){
+  .pic1{
+    background-image: url('../images/train.jpg') ;
+    background-size:cover;
+    position: relative;
+  }
+}
+@media screen and (min-width: 400px){
+  .mySlides{
+    background-image: url('../images/track.jpg');
+    background-size:cover;
+    position: relative;
+  }
+}
+.slides{
+   text-align: center;
+   position: relative;
+   top: 50%
+   left: 50%
+   transform: translate(-50%, -50%);
+   color: white;
 }
 
 /* Caption text */
@@ -56,9 +78,9 @@
 /* Fading animation */
 .fade {
   -webkit-animation-name: fade;
-  -webkit-animation-duration: 1.5s;
+  -webkit-animation-duration: 2s;
   animation-name: fade;
-  animation-duration: 1.5s;
+  animation-duration: 2s;
 }
 
 @-webkit-keyframes fade {

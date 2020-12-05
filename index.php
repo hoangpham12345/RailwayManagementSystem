@@ -1,43 +1,44 @@
 <!DOCTYPE html>
 <html>
-	<head>
+	<head lang="en">
 		<meta charset="utf-8">
-		<title>Railway Management System</title>
-		<link rel="icon" href="images/icon.svg"></link>
 		<link rel="stylesheet" type="text/css" href="stylesheet/index.css"></link>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.10.2/p5.js"></script>
 		<script src="scripts/slideshow.js"></script>
 		<script>
-			window.addEventListener("load", function(){autoShowSlides()}, false);
+			window.onload = function(){
+				autoShowSlides();
+			}
 		</script>
 	</head>
 	<body>
-		<!-- <iframe id="loader" src="https://hoangpham12345.github.io/RMS-audios/loader.html" title="RMS-loader"
-			        height=100% width=100% scrolling="no" style="position: absolute; border: none; z-index: 2; display:block"></iframe> -->
-		<!-- <div id="page_content" style="display:block"> -->
-			<?php require_once('header.php'); ?>
-
-			<div class="slideshow-container" style="text-align:center">
-				<div class="mySlides fade">
-					<img src="images/slideshow/img1.jpg">
-				</div>
-				<div class="mySlides fade">
-					<img src="images/slideshow/img2.jpg">
-				</div>
-				<div class="mySlides fade">
-					<img src="images/slideshow/img3.jpg">
-				</div>
-				<br>
-				<div style="text-align:center">
-					<span class="dot" onclick="currentSlide(1)"></span>
-					<span class="dot" onclick="currentSlide(2)"></span>
-					<span class="dot" onclick="currentSlide(3)"></span>
-				</div>
+		<?php require_once('header.php'); ?>
+		<div class="slideshow-container" style="text-align:center">
+			<div class="mySlides fade" id="pic1">
+ 				<img src="images/train_test.jpg">
 			</div>
+			<div class="mySlides fade">
+			  <img src="images/slideshow/image4_test.jpg">
+			</div>
+			<div class="mySlides fade">
+			  <img src="images/slideshow/img1_test.jpg" >
+			</div>
+			<br>
+			<div class = "slides" style="test-align:center">
+				<span class="dot" onclick="currentSlide(1)"></span>
+			  <span class="dot" onclick="currentSlide(2)"></span>
+			  <span class="dot" onclick="currentSlide(3)"></span>
+			</div>
+		</div>
+		<div id = "Content2">
+				<h2>
+					It's an on-going project to help the customers be at ease whenever they take the trains.</h2>
+				<h2>
+					Easy to navigate the map for booking and to book with clear and direct information.
+				</h2>
 
-			<?php require_once('footer.php'); ?>
-		<!-- </div> -->
-
+		</div>
+		<?php require_once('footer.php'); ?>
 	</body>
 </html>
