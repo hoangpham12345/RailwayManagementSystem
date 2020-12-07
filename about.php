@@ -61,7 +61,7 @@
 				<div class="mapouter">
 					<div class="gmap_canvas">
 						<!-- <iframe width="400" height="400" id="gmap_canvas" src="https://maps.google.com/maps?q=international%20university&t=&z=13&ie=UTF8&iwloc=&output=embed"  generated code -->
-						<iframe width="1600" height="400" id="gmap_canvas" src="https://www.google.com/maps/embed?origin=mfe&pb=!1m3!2m1!1sinternational+university!6i16"
+						<iframe width="100%" height="400" id="gmap_canvas" src="https://www.google.com/maps/embed?origin=mfe&pb=!1m3!2m1!1sinternational+university!6i16"
 							frameborder="0" scrolling="no" marginheight="0" marginwidth="0" text-align="center"></iframe>
 					</div>
 				</div>

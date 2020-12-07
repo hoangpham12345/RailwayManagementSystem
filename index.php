@@ -25,7 +25,7 @@
 			  <img src="images/slideshow/img1_test.jpg" >
 			</div>
 			<br>
-			<div class = "slides" style="test-align:center">
+			<div class = "slides" style="position:center">
 				<span class="dot" onclick="currentSlide(1)"></span>
 			  <span class="dot" onclick="currentSlide(2)"></span>
 			  <span class="dot" onclick="currentSlide(3)"></span>
