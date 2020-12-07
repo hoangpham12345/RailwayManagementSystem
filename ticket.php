@@ -20,7 +20,6 @@
 		<meta charset="utf-8">
     <title>TICKET</title>
 		<link rel="icon" type="image/png" href="images/icon.svg"></link>
-		<link rel="stylesheet" type="text/css" href="stylesheet/rms.css"></link>
 		<link rel="stylesheet" type="text/css" href="stylesheet/ticket.css"></link>
   </head>
   <body>
