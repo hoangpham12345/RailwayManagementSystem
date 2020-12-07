@@ -17,14 +17,11 @@ header {
   padding-top: 10px;
   background-color: #c2843d;
 }
-header table{
-  text-align: left;
-}
 /* Increase the font size of the heading */
 header p {
   font-size: 30px;
   font-weight: bold;
-  font-family: Candara;
+  font-family: sans-serif;
   font-style: normal;
   padding: 0px;
   margin: auto;
@@ -35,12 +32,14 @@ nav {
   background-color: #996633;
   margin: 10px 0px 0px 0px;
   text-align: left;
+
 }
 /* Style the navigation bar links */
 nav ul {
 	margin: 0px;
 	list-style-type: none;
 	padding: 5px 0px 5px 0px;
+
 }
 nav ul li {
 	display: inline;
@@ -59,7 +58,7 @@ nav ul li a {
 
 /* Right-aligned link */
 nav a.right {
-  float:  right;
+  float:  none;
 }
 
 /* Change color on hover */
@@ -86,7 +85,7 @@ nav a:hover {
 /*Content*/
 #Content2 {
    background-color: white;
-   margin-left: 30%;
+   margin-left: 10%;
    margin-right: 30%;
    border: 2px dotted white;
    padding: 10px 10px 10px 10px;
@@ -96,17 +95,20 @@ nav a:hover {
 #Content h1{
   border-bottom-style:   solid;
   border-bottom:  2px dotted solid black;
-  padding: 0 20% 0 20%;
+  padding: 0 10% 0 20%;
   text-align: left;
   font-size: 400%;
 }
 
 /* Footer */
 footer{
+  position:fixed;
   background-color: brown;
   color: white;
   text-align: center;
   font-size: small;
+  bottom:0;
+  width:100%;
 }
 table#footer-table{
   width: 100%;
@@ -140,7 +142,9 @@ table table#inner-footer-table a{
 }
 /*Menu button*/
 
+
 .container {
+padding-left:0;
   display: inline-block;
   cursor: pointer;
 }
@@ -148,14 +152,15 @@ table table#inner-footer-table a{
 .bar1, .bar2, .bar3 {
   width: 35px;
   height: 5px;
-  background-color: #333;
+  background-color: black;
   margin: 6px 0;
   transition: 0.4s;
+  display: flex;
 }
 
 .change .bar1 {
-  -webkit-transform: rotate(-45deg) translate(-9px, 6px);
-  transform: rotate(-45deg) translate(-9px, 6px);
+  -webkit-transform: rotate(-45deg) translate(-6.75px, 6.75px);
+  transform: rotate(-45deg) translate(-8px, 7.25px);
 }
 
 .change .bar2 {opacity: 0;}
@@ -164,24 +169,16 @@ table table#inner-footer-table a{
   transform: rotate(45deg) translate(-8px, -8px);
 }
 
-#title1{
-  -ms-flex:60%;
-
-}
-
-#Menu-bar {
-  padding-left: 750px;
-  background-color: #c2843d;
-}
 
 .dropdown {
-  position: relative;
+  float:right;
+  position: absolute;
   display: inline-block;
 }
 
 .dropdown-content {
   display: none;
-  position: absolute;
+  position:absolute;
   right:0;
   background-color: #f1f1f1;
   min-width: 160px;
@@ -200,9 +197,10 @@ table table#inner-footer-table a{
 
 .show {display: block;}
 
-.dropbtn {
+#dropbtn {
+  padding-top:10px;
+  padding-left:500px;
   background-color: #c2843d;
-  color: white;
   border: none;
   cursor: pointer;
 }
