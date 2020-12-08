@@ -6,7 +6,6 @@
   vertical-align: middle;
   height: 600px;
   width: 100%;
-
 }
 /* Slideshow container */
 .slideshow-container {
@@ -36,6 +35,14 @@
    left: 50%
    transform: translate(-50%, -50%);
    color: white;
+}
+
+/*Content*/
+#content {
+   margin-left: 10%;
+   margin-right: 30%;
+   padding: 10px 10px 10px 10px;
+   font-family: serif;
 }
 
 /* Caption text */

@@ -11,11 +11,10 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  /*background-color: #f2e6d9;*/
+  background-color: #f2e6d9;
 }
 /* Header/logo Title */
 header {
-  font-family: Arial, Helvetica, sans-serif;
   text-align: center;
   overflow: auto;
   padding-top: 10px;
@@ -25,7 +24,7 @@ header {
 header p {
   font-size: 30px;
   font-weight: bold;
-  font-family: sans-serif;
+  font-family: 'Trebuchet MS', sans-serif;
   font-style: normal;
   padding: 0px;
   margin: auto;
@@ -88,23 +87,6 @@ nav a:hover {
   background-color: #f1f1f1;
   padding: 20px;
 }
-/*Content*/
-#Content2 {
-   background-color: white;
-   margin-left: 10%;
-   margin-right: 30%;
-   border: 2px dotted white;
-   padding: 10px 10px 10px 10px;
-   font-family: sans-serif;
-
-}
-#Content h1{
-  border-bottom-style:   solid;
-  border-bottom:  2px dotted solid black;
-  padding: 0 10% 0 20%;
-  text-align: left;
-  font-size: 400%;
-}
 
 /* Footer */
 footer{
@@ -143,69 +125,4 @@ table table#inner-footer-table a{
     float: none;
     width: 100%;
   }
-}
-}
-/*Menu button*/
-
-
-.container {
-  right: 0;
-  display: inline-block;
-  cursor: pointer;
-}
-
-.bar1, .bar2, .bar3 {
-  width: 35px;
-  height: 5px;
-  background-color: black;
-  margin: 6px 0;
-  transition: 0.4s;
-  display: flex;
-}
-
-.change .bar1 {
-  -webkit-transform: rotate(-45deg) translate(-6.75px, 6.75px);
-  transform: rotate(-45deg) translate(-8px, 7.25px);
-}
-
-.change .bar2 {opacity: 0;}
-.change .bar3 {
-  -webkit-transform: rotate(45deg) translate(-8px, -8px);
-  transform: rotate(45deg) translate(-8px, -8px);
-}
-
-
-.dropdown {
-  float:right;
-  position: absolute;
-  display: inline-block;
-}
-
-.dropdown-content {
-  display: none;
-  position:absolute;
-  right:0;
-  background-color: #f1f1f1;
-  min-width: 160px;
-  overflow:  hidden;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-
-}
-
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-.show {display: block;}
-
-#dropbtn {
-  padding-top:10px;
-  padding-left:500px;
-  background-color: #c2843d;
-  border: none;
-  cursor: pointer;
 }

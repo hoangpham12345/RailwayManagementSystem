@@ -2,6 +2,8 @@
 <html>
 	<head lang="en">
 		<meta charset="utf-8">
+		<title>Railway Management System</title>
+		<link rel="icon" href="images/icon.svg"></link>
 		<link rel="stylesheet" type="text/css" href="stylesheet/index.css"></link>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.10.2/p5.js"></script>
@@ -31,7 +33,7 @@
 			  <span class="dot" onclick="currentSlide(3)"></span>
 			</div>
 		</div>
-		<div id = "Content2">
+		<div id ="content">
 				<h2>
 					It's an on-going project to help the customers be at ease whenever they take the trains.</h2>
 				<h2>

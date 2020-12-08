@@ -2,42 +2,51 @@
 .mapouter{
     position: relative;
     text-align: center;
-    height: 400px;
-    width:100%;
+    height: 600px;
+    width: 800px;
 }
 .gmap_canvas {
     overflow: hidden;
     background: none!important;
-    height: 400px;
+    height: 600px;
 }
-.column2{
-  float : center;
-  width: 66.7%
+
+.column2 {
   margin-bottom: 16px;
-  padding: 0 8px;
+  padding: 0px 8px 10px 0px;
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Trebuchet MS', sans-serif;
   margin: 0;
+  text-align: center;
 }
-html {
-  box-sizing: border-box;
+
+h2 {
+  text-align: center;
+  letter-spacing: 15px;
+  font-size: 20px;
 }
-*, *:before, *:after {
-  box-sizing: inherit;
+
+.row {
+  display: inline-block;
 }
 
 .column {
-  float: left;
-  width: 33.3%;
+  width: 30%;
   margin-bottom: 16px;
   padding: 0 8px;
+  display: inline-block;
 }
 
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   margin: 8px;
+  background-color: white;
+}
+
+.cardtitle {
+  font-size: 30px;
 }
 
 .about-section {
