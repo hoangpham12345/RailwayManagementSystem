@@ -33,14 +33,46 @@
 			  <span class="dot" onclick="currentSlide(3)"></span>
 			</div>
 		</div>
-		<div id ="content">
-				<h2>
-					It's an on-going project to help the customers be at ease whenever they take the trains.</h2>
-				<h2>
-					Easy to navigate the map for booking and to book with clear and direct information.
-				</h2>
-
+		<br>
+		<div class ="content">
+			<h1>News <a> <img src="images/news.jpg" alt="" style="width:50px;height:50px"></a></h1>
+			<div class ="news-grid">
+				<div class="blockcontent">
+					<div class="card1" id="Front news">
+						<div class="card1-content">
+							<h3>Health</h3>
+							<a href="https://e.vnexpress.net/photo/news/how-vietnam-produces-its-domestic-covid-19-vaccine-4205025.html"><img src="images/cov.png" alt="" style="width:100%; height:150px"> </a>
+							<p>Stay safe and always wear mask.</p>
+						</div>
+					</div>
+					<div class="card1" id="Health">
+						<div class="card1-content">
+								<h3>Life</h3>
+							<a href="https://thanhnien.vn/suc-khoe/dieu-gi-xay-ra-khi-ban-an-moi-ngay-mot-trai-chuoi-1315452.html"><img src="images/health.jpg" alt="" style="width:100%; height:150px"> </a>
+							<br>
+							<p>Take care of your body and stay alert. </p>
+						</div>
+					</div>
+					<div class="card1" id="Travel">
+						<div class="card1-content">
+							<h3>Travel</h3>
+							<a href="https://e.vnexpress.net/news/travel/food/ha-tinh-s-unique-steamed-rice-rolls-with-spring-roll-stuffing-4204927.html"><img src="images/travel.jpg" alt="" style="width:100%; height:150px"> </a>
+							<p>Discover your favorite places.</p>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
+		<div class="content">
+			<h1>Announcement <a> <img src="images/Ann.png" alt="" style="width:50px;height:50px"></a></h1>
+			<div class="news-grid"  style="background-color:white; margin-left:5%;margin-right:5%">
+				<div class="blockcontent" >
+					<h2> Update </h2>
+						<p>Currently no issues.</p>
+				</div>
+			</div>
+		</div>
+		<br>
 		<?php require_once('footer.php'); ?>
 	</body>
 </html>

@@ -3,7 +3,7 @@
     position: relative;
     text-align: center;
     height: 600px;
-    width: 800px;
+    width: 100%;
 }
 .gmap_canvas {
     overflow: hidden;
@@ -13,7 +13,7 @@
 
 .column2 {
   margin-bottom: 16px;
-  padding: 0px 8px 10px 0px;
+  width:100%;
 }
 
 body {

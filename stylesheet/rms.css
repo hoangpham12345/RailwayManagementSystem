@@ -13,6 +13,41 @@ body {
   flex-direction: column;
   background-color: #f2e6d9;
 }
+.content{
+  margin-left:10%;
+  margin-right:10%;
+
+}
+.content h1{
+  margin-left: 5% ;
+  font-family: serif;
+}
+.news-grid{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+}
+.blockcontent{
+  text-align: center;
+}
+.card1{
+  width: 30%;
+  display: inline-block;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin-left: 10px;
+  margin-right: 10px;
+  background-color: white;
+}
+.card1-content{
+  padding: 5% 10% 10% 10%;
+  text-align: left;
+}
+.blockcontent:first-child{
+  margin-left: 5%;
+}
+.blockcontent:last-child{
+  margin-right: 5%
+}
 /* Header/logo Title */
 header {
   text-align: center;
@@ -49,9 +84,12 @@ nav ul {
 nav ul li {
 	display: inline;
 	padding: 5px 60px 5px 60px;
+  box-shadow: 8px 4px 8px 4px rgba(0, 0, 0, 0.2);
+
 }
 nav ul li.selected {
   background: gray;
+
 }
 nav ul li a {
   font-family: Verdana, sans-serif;

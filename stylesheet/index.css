@@ -4,7 +4,7 @@
 }
 .mySlides img {
   vertical-align: middle;
-  height: 600px;
+  height: 500px;
   width: 100%;
 }
 /* Slideshow container */
@@ -30,19 +30,15 @@
 }
 .slides{
    text-align: center;
-   position: relative;
+   position:  absolute;
    top: 50%
    left: 50%
    transform: translate(-50%, -50%);
    color: white;
-}
-
-/*Content*/
-#content {
-   margin-left: 10%;
-   margin-right: 30%;
-   padding: 10px 10px 10px 10px;
-   font-family: serif;
+   display: flex;
+   margin-top: -5%;
+   z-index: 2;
+   padding-left: 50%;
 }
 
 /* Caption text */
