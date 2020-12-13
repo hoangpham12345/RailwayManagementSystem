@@ -28,7 +28,8 @@ body {
   display: flex;
 }
 .blockcontent{
-  text-align: center;
+  text-align:  left;
+  margin-bottom: 5%
 }
 .card1{
   width: 30%;
@@ -38,9 +39,22 @@ body {
   margin-right: 10px;
   background-color: white;
 }
+.card2{
+  width:100%;
+  display: inline-block;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin-top: 5%;
+}
+.blockcontent:last-child{
+
+}
 .card1-content{
   padding: 5% 10% 10% 10%;
   text-align: left;
+}
+.card2-content{
+  text-align: left;
+  padding: 5px 10px 10px 10px;
 }
 .blockcontent:first-child{
   margin-left: 5%;
@@ -48,6 +62,7 @@ body {
 .blockcontent:last-child{
   margin-right: 5%
 }
+
 /* Header/logo Title */
 header {
   text-align: center;
@@ -84,8 +99,6 @@ nav ul {
 nav ul li {
 	display: inline;
 	padding: 5px 60px 5px 60px;
-  box-shadow: 8px 4px 8px 4px rgba(0, 0, 0, 0.2);
-
 }
 nav ul li.selected {
   background: gray;
