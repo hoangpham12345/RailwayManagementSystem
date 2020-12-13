@@ -21,8 +21,8 @@
 		        <p class="cardtitle">Trevor Phillips</p>
 		        <p class="title">CEO</p>
 		        <p>A leading Entrepreneur</p>
-		        <p>@example.com</p>
-		        <p><button class="button">Contact</button></p>
+		        <p>trevor@phillips.com</p>
+		        <p><button class="button" onclick="window.location.href='mailto:trevor@phillips.com';">Contact</button></p>
 				</div>
 			</div>
 		</div>
@@ -37,7 +37,7 @@
 		        <p class="title">Leader</p>
 		        <p>Back-end and Booking Tab.</p>
 		        <p>lybaothoai@gmail.com</p>
-		        <p><button class="button">Contact</button></p>
+		        <p><button class="button" onclick="window.location.href='mailto:lybaothoai@gmail.com';">Contact</button></p>
 		      </div>
 		    </div>
 		  </div>
@@ -48,8 +48,8 @@
 		        <p class="cardtitle">Phạm Huy Hoàng</p>
 		        <p class="title">Director</p>
 		        <p>Back-end and controls the flow of page.</p>
-		        <p>phamhuyhoang@gmail.com</p>
-		        <p><button class="button">Contact</button></p>
+		        <p>phamhuyhoang93tn@gmail.com</p>
+		        <p><button class="button" onclick="window.location.href='mailto:phamhuyhoang93tn@gmail.com';">Contact</button></p>
 		      </div>
 		    </div>
 		  </div>
@@ -61,7 +61,7 @@
 		        <p class="title">Designer</p>
 		        <p>Front-end and update information.</p>
 		        <p>ssj4gohu@gmail.com</p>
-		        <p><button class="button">Contact</button></p>
+		        <p><button class="button" onclick="window.location.href='mailto:ssj4gohu@gmail.com';">Contact</button></p>
 		      </div>
 		    </div>
 		  </div>
