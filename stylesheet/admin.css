@@ -80,6 +80,26 @@ ul#drop_down_list li:hover{
   color: white;
 }
 
+div#start{
+  width: 40%;
+  background-color: wheat ;
+  margin: auto;
+  opacity: 0.5;
+  margin-top: 200px;
+  padding: 10px;
+}
+
+div#start h1 {
+  text-align: center;
+}
+
+span.guide_text {
+  color: brown;
+  background-color: lightblue;
+  font-weight: bold;
+  padding: 5px;
+  border: 1px solid black;
+}
 
 /* These are for simple management tab */
 div#simple_manage_panel{

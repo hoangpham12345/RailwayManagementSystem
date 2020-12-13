@@ -35,6 +35,14 @@
       <li id="advance_query">ADVANCED QUERY</li>
     </ul>
 
+    <div id="start">
+      <h1>Welcome to Admin page</h1>
+      <p>Select <span class="guide_text">SYSTEM MANAGEMENT</span> &rarr; <span class="guide_text">SIMPLE MANAGEMENT</span> for simple managemenet</p>
+      <p>Select <span class="guide_text">SYSTEM MANAGEMENT</span> &rarr; <span class="guide_text">ADVANCED QUERY</span> for manual query</p>
+      <p>Select <span class="guide_text">FIX REQUEST</span> to display the fix request</p>
+      <p>Select <span class="guide_text">FEEDBACK MANAGEMENT</span> to display the feedback from users</p>
+    </div>
+
     <div id = "simple_manage_panel" class="hidden">
       <div id ="tables_list"></div>
       <div id ="display_content"></div>
@@ -43,8 +51,7 @@
     <div id="query_panel" class="hidden">
       <form>
         <p id="query_label">Enter the SQL query</p>
-        <textarea id="query" name="query" placeholder="Right now, please using this with only SELECT, SHOW and DESC (DESCRIBE) commands."></textarea><br>
-        <!-- <input type="submit" value="GO">'; -->
+        <textarea id="query" name="query" placeholder="Please using this to do the update and delete."></textarea><br>
       </form>
       <table id="query_buttons">
         <tr>
@@ -56,10 +63,8 @@
       <div id="result_div"></div>
     </div>
 
-    <!-- <div id="result_div" class="hidden"></div> -->
-
     <footer>
-      <p>Copyright &copy 2020 by Visualization group. All right reserved</p>
+      <p>Copyright &copy; 2020 by Visualization group. All right reserved</p>
     </footer>
 
   </body>

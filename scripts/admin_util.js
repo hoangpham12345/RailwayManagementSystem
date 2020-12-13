@@ -5,7 +5,7 @@ function displayResult(){
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("query_indicator").innerHTML = "Command executed successfully."
+            document.getElementById("query_indicator").innerHTML = "Command executed successfully.\n"
             document.getElementById("result_div").innerHTML = this.responseText;
         }
     };
@@ -28,20 +28,8 @@ function displayTableContent(event){
 
 }
 
-// function databaseTableClickHandler(){
-//     var tables = document.getElementsByClassName("database_table");
-//     console.log("can this be shown 3?");
-//     console.log(tables.length);
-//     // for (var i = 1; i < tables.length; i++){
-//     //     tables[i].addEventListener("click", displayTableContent(tables[i]), false);
-//     //     console.log(tables[i].innerHTML);
-//     // };
-// }
-
 function displayDatabaseTables(){
-    // document.getElementById("tables_list").innerHTML = "";
     var query = "SHOW TABLES";
-    // var query = "A";
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
@@ -77,21 +65,29 @@ function hideSelection(){
 }
 
 function displaySimpleManagement(){
+    //start
+    document.getElementById("start").innerHTML = "";
+    document.getElementById("start").className = "hidden";
+    //advance query
     document.getElementById("query_panel").className = "hidden";
     document.getElementById("query").value = "";
     document.getElementById("query_indicator").innerHTML = "";
     document.getElementById("result_div").innerHTML = "";
-
+    //simple management
     document.getElementById("simple_manage_panel").className = "";
     document.getElementById("tables_list").innerHTML = "";
     document.getElementById("display_content").innerHTML = "";
 }
 
 function displayAdvancedQuery(){
+    //start
+    document.getElementById("start").innerHTML = "";
+    document.getElementById("start").className = "hidden";
+    //advance query
     document.getElementById("simple_manage_panel").className = "hidden";
     document.getElementById("tables_list").innerHTML = "";
     document.getElementById("display_content").innerHTML = "";
-
+    //simple management
     document.getElementById("query").value = "";
     document.getElementById("query_indicator").innerHTML = "";
     document.getElementById("result_div").innerHTML = "";
