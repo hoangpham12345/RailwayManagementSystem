@@ -51,7 +51,7 @@
     <div id="query_panel" class="hidden">
       <form>
         <p id="query_label">Enter the SQL query</p>
-        <textarea id="query" name="query" placeholder="Please using this to do the update and delete."></textarea><br>
+        <textarea id="query" name="query" placeholder="Please use this query panel to do the update and delete."></textarea><br>
       </form>
       <table id="query_buttons">
         <tr>
