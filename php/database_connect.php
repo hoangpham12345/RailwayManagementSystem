@@ -15,7 +15,7 @@
     define('DATABASE', 'localdb');
   }
 
-  //local_var();
+  // local_var();
   server_var();
 
   $con = mysqli_connect(SERVER, USERNAME, PASSWORD, DATABASE);
