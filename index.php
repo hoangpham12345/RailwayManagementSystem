@@ -74,7 +74,7 @@
 								<p style=""> Trevor Phillips Industry is aiming for a bigger picture by expanding his work and delivery throughout
 									 the country. </p>
 								<p>Through this software, people can book their tickets with knowledge of their paths for the entire run thereby making
-								the trip easy,safe and relaxing.</p>
+								the trip easy, safe and relaxing.</p>
 						</div>
 				</div>
 				<br>
