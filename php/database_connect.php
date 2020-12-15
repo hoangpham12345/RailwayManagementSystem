@@ -9,13 +9,13 @@
 
   //for using in Azure
   function server_var(){
-    define('SERVER', '127.0.0.1:57176');
+    define('SERVER', '127.0.0.1:50410');
     define('USERNAME', 'azure');
     define('PASSWORD', '6#vWHD_$');
     define('DATABASE', 'localdb');
   }
 
-  //local_var();
+  // local_var();
   server_var();
 
   $con = mysqli_connect(SERVER, USERNAME, PASSWORD, DATABASE);
